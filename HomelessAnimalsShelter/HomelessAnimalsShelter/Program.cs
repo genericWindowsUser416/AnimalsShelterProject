@@ -7,7 +7,7 @@ namespace HomelessAnimalsShelter
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddBlazorBootstrap();
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
