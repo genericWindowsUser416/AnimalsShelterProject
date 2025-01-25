@@ -1,4 +1,4 @@
-using HomelessAnimalsShelter.Components;
+using HomelessAnimalsShelter.UI.Components;
 
 namespace HomelessAnimalsShelter
 {
