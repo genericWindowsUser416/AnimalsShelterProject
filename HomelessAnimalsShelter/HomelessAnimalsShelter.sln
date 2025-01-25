@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter", "HomelessAnimalsShelter\HomelessAnimalsShelter.csproj", "{75622CE9-D1EC-40AE-BB84-FDCA8F8B323B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomelessAnimalsShelter.UI", "HomelessAnimalsShelter\HomelessAnimalsShelter.UI.csproj", "{75622CE9-D1EC-40AE-BB84-FDCA8F8B323B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E2459A5-A677-4882-8EAA-8AC81722D3A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter.BLL", "HomelessAnimalsShelter.BLL\HomelessAnimalsShelter.BLL.csproj", "{1DAFC840-A915-48A7-8D1B-8551FA47D12F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsProject.DAL", "HomelessAnimalsProject.DAL\HomelessAnimalsProject.DAL.csproj", "{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter.Core", "HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj", "{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +23,18 @@ Global
 		{75622CE9-D1EC-40AE-BB84-FDCA8F8B323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75622CE9-D1EC-40AE-BB84-FDCA8F8B323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75622CE9-D1EC-40AE-BB84-FDCA8F8B323B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DAFC840-A915-48A7-8D1B-8551FA47D12F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DAFC840-A915-48A7-8D1B-8551FA47D12F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DAFC840-A915-48A7-8D1B-8551FA47D12F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DAFC840-A915-48A7-8D1B-8551FA47D12F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

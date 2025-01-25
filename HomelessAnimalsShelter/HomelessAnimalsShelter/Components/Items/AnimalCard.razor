@@ -1,0 +1,17 @@
+﻿<div style="border: 2px dotted red; width: 200px; margin:5px;">
+	<h1>@Name</h1>
+	<p>@Discription</p>
+	<a href="/animal/@Id"><button>Подробнее</button></a>
+</div>
+
+@code
+{
+	[Parameter]
+	public string Name { get; set; } = "-";
+
+	[Parameter]
+	public string Discription { get; set; } = "-";
+
+	[Parameter]
+	public int Id { get; set; } = 0;
+}
