@@ -1,5 +1,139 @@
-﻿<h3>Component</h3>
+﻿<div class="donation-container">
+    <div class="amount-grid">
+        @foreach (var amount in amounts)
+        {
+            <button class="amount-btn @(selectedAmount == amount ? "selected" : "")"
+                    @onclick="() => SelectAmount(amount)">
+                @amount ₽
+            </button>
+        }
+    </div>
+
+    <div class="custom-amount">
+        <input type="number"
+               @bind="customAmount"
+               @bind:event="oninput"
+               min="0"
+               placeholder="Введите сумму"
+               class="@(hasCustomAmount ? "custom-selected" : "")" />
+    </div>
+
+    <button class="donate-btn" @onclick="HandleDonation">
+        ПОЖЕРТВОВАТЬ
+    </button>
+</div>
+
+<style>
+    .donation-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 400px;
+        margin: 2rem auto;
+    }
+
+    .header {
+        text-align: center;
+        color: blue;
+        margin-bottom: 1.5rem;
+    }
+
+    .amount-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .amount-btn {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: none;
+        cursor: pointer;
+        font-weight: bold;
+        color: #333;
+        transition: all 0.2s;
+    }
+
+    .amount-btn:hover {
+        border-color: #007bff;
+        color: #007bff;
+    }
+
+    .amount-btn.selected {
+        border-color: #007bff;
+        background-color: #e3f2fd;
+        color: #007bff;
+    }
+
+    .custom-amount input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    .custom-amount input.custom-selected {
+        border-color: #007bff;
+    }
+
+    .donate-btn {
+        width: 100%;
+        padding: 14px;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .donate-btn:hover {
+        background-color: dodgerblue;
+    }
+</style>
 
 @code {
+    private int[] amounts = { 100, 500, 2000, 200, 1000, 5000 };
+    private int? selectedAmount = null;
+    private string customAmount = "";
+    private bool hasCustomAmount = false;
 
+    private void SelectAmount(int amount)
+    {
+        selectedAmount = amount;
+        customAmount = "";
+        hasCustomAmount = false;
+    }
+
+    private void HandleDonation()
+    {
+        if (selectedAmount.HasValue || !string.IsNullOrWhiteSpace(customAmount))
+        {
+            var amount = selectedAmount ?? int.Parse(customAmount);
+            Console.WriteLine($"Пожертвование на сумму: {amount} ₽");
+        }
+    }
+
+    private string CustomAmount
+    {
+        get => customAmount;
+        set
+        {
+            if (int.TryParse(value, out int num) && num >= 0)
+            {
+                customAmount = value;
+                selectedAmount = null;
+                hasCustomAmount = !string.IsNullOrWhiteSpace(value);
+            }
+            else if (string.IsNullOrWhiteSpace(value))
+            {
+                customAmount = "";
+                hasCustomAmount = false;
+            }
+        }
+    }
 }
