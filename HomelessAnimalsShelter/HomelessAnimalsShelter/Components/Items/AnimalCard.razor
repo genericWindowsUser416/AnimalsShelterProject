@@ -1,8 +1,81 @@
-﻿<div style="border: 4px dotted black; width: 200px; margin:5px;">
+﻿<div class="animal-card">
 	<h1>@Name</h1>
 	<p>@Description</p>
 	<a href="/animal/@Id"><button>Подробнее</button></a>
 </div>
+
+<style>
+    .animal-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    .header {
+        text-align: center;
+        color: blue;
+        margin-bottom: 1.5rem;
+    }
+
+    .amount-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .amount-btn {
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background: none;
+        cursor: pointer;
+        font-weight: bold;
+        color: #333;
+        transition: all 0.2s;
+    }
+
+        .amount-btn:hover {
+            border-color: #007bff;
+            color: #007bff;
+        }
+
+        .amount-btn.selected {
+            border-color: #007bff;
+            background-color: #e3f2fd;
+            color: #007bff;
+        }
+
+    .custom-amount input {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+        .custom-amount input.custom-selected {
+            border-color: #007bff;
+        }
+
+    .donate-btn {
+        width: 100%;
+        padding: 14px;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .donate-btn:hover {
+            background-color: dodgerblue;
+        }
+</style>
+
 
 @code
 {
