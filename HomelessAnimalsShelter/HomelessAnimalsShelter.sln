@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomelessAnimalsShelter.UI",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E2459A5-A677-4882-8EAA-8AC81722D3A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter.BLL", "HomelessAnimalsShelter.BLL\HomelessAnimalsShelter.BLL.csproj", "{1DAFC840-A915-48A7-8D1B-8551FA47D12F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomelessAnimalsShelter.BLL", "HomelessAnimalsShelter.BLL\HomelessAnimalsShelter.BLL.csproj", "{1DAFC840-A915-48A7-8D1B-8551FA47D12F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter.DAL", "HomelessAnimalsProject.DAL\HomelessAnimalsShelter.DAL.csproj", "{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomelessAnimalsShelter.DAL", "HomelessAnimalsProject.DAL\HomelessAnimalsShelter.DAL.csproj", "{31CAE6B9-1EA3-4E62-A9CE-A5A6D3345865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomelessAnimalsShelter.Core", "HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj", "{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomelessAnimalsShelter.Core", "HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj", "{692D0F1A-2B19-4C63-B016-B5C7D0E52A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
