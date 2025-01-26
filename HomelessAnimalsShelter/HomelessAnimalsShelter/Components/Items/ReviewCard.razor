@@ -1,13 +1,14 @@
-﻿<div class="comment-card">
+﻿<h3>ReviewCard</h3>
+<div class="review-card">
 	<Button Class="reject-btn">Отклонить</Button>
 	<Button Class="accept-btn">Принять</Button>
 	<h3 class="UserData">@Name</h3>
-	<p class="ContentsOfTheComment">@ContentsOfTheComment</p>
+	<p class="ContentsOfTheComment">@Description</p>
 </div>
 
 <style>
 
-	.comment-card {
+	.review-card {
 		position: relative;
 		background: white;
 		padding: 2rem;
@@ -20,7 +21,7 @@
 		width: 150px;
 		height: 50px;
 		position: absolute;
-		background: #007bff;
+		background: lightblue;
 		border: 12px;
 		border-radius: 10px;
 		bottom: 10px;
@@ -31,7 +32,7 @@
 		width: 150px;
 		height: 50px;
 		position: absolute;
-		background: blue;
+		background: lightblue;
 		border: 12px;
 		border-radius: 10px;
 		top: 10px;
@@ -40,13 +41,13 @@
 
 </style>
 
-@code 
+@code
 {
 	[Parameter]
 	public string Name { get; set; } = "-";
 
 	[Parameter]
-	public string ContentsOfTheComment { get; set; } = "-";
+	public string Description { get; set; } = "-";
 
 	[Parameter]
 	public int Id { get; set; } = 0;
