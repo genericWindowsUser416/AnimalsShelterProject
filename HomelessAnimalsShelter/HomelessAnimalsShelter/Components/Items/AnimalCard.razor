@@ -1,18 +1,26 @@
 ﻿<div class="animal-card">
-	<h1>@Name</h1>
+    <img src="ANIMAL.jpg" alt="Animal image">
+    <hr/>
+    <p>@Name</p>
 	<p>@Description</p>
-	<a href="/animal/@Id"><button>Подробнее</button></a>
 </div>
-
 <style>
     .animal-card {
         background: white;
         padding: 2rem;
         border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        width: 400px;
+        box-shadow: 2px 2px 4px 6px rgba(0.1,0.1,0.1,0.1);
+        width: 250px;
     }
 
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
     .header {
         text-align: center;
         color: blue;
