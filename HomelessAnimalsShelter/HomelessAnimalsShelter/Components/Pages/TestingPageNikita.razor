@@ -3,14 +3,45 @@
 @using HomelessAnimalsShelter.UI.Components.Items
 <h3>TestingPageNikita</h3>
 
-<div>
-	<Button>Отклонить</Button>
-	<Button>Принять</Button>
-	<h2>@UserData</h2>
-	<h3>ContentsOfTheComment</h3>
+<div class="CommentCard">
+	<Button Class="reject-btn">Отклонить</Button>
+	<Button Class="accept-btn">Принять</Button>
+	<h3>@UserData</h3>
+	<p>ContentsOfTheComment</p>
 </div>
 
 <style>
+	
+	.CommentCard {
+		position: relative;
+		background: white;
+		padding: 2rem;
+		border-radius: 12px;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		width: 400px;
+	}
+
+	.reject-btn {
+		width: 150px;
+		height: 50px;
+		position: absolute;
+		background: #007bff;
+		border: 12px;
+		border-radius: 10px;
+		bottom: 10px;
+		right: 10px;
+	}
+
+	.accept-btn {
+		width: 150px;
+		height: 50px;
+		position: absolute;
+		background: blue;
+		border: 12px;
+		border-radius: 10px;
+		top: 10px;
+		right: 10px;
+	}
 
 </style>
 
