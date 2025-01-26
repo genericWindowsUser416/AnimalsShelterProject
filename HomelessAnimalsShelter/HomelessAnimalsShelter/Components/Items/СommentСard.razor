@@ -1,7 +1,7 @@
 ﻿<div class="comment-card">
 	<Button Class="reject-btn">Отклонить</Button>
 	<Button Class="accept-btn">Принять</Button>
-	<h3 class="UserData">@UserData</h3>
+	<h3 class="UserData">@Name</h3>
 	<p class="ContentsOfTheComment">@ContentsOfTheComment</p>
 </div>
 
@@ -40,11 +40,14 @@
 
 </style>
 
-@code {
+@code 
+{
 	[Parameter]
-	public string UserData { get; set; } = "-";
+	public string Name { get; set; } = "-";
 
 	[Parameter]
 	public string ContentsOfTheComment { get; set; } = "-";
 
+	[Parameter]
+	public int Id { get; set; } = 0;
 }
