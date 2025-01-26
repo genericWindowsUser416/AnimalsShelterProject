@@ -2,7 +2,7 @@
 	<Button Class="reject-btn">Отклонить</Button>
 	<Button Class="accept-btn">Принять</Button>
 	<h3 class="UserData">@UserData</h3>
-	<p class="ContentsOfTheComment">ContentsOfTheComment</p>
+	<p class="ContentsOfTheComment">@ContentsOfTheComment</p>
 </div>
 
 <style>
@@ -45,6 +45,6 @@
 	public string UserData { get; set; } = "-";
 
 	[Parameter]
-	public string ContentsOfTheСomment { get; set; } = "-";
+	public string ContentsOfTheComment { get; set; } = "-";
 
 }
