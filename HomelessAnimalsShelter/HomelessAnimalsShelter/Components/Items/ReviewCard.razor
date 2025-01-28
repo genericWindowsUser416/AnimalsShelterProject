@@ -4,7 +4,17 @@
 	<Button Class="accept-btn">Принять</Button>
 	<h3 class="UserData">@Name</h3>
 	<p class="ContentsOfTheComment">@Description</p>
+	<p class="stars">☆</p>
+	<p class="stars">☆</p>
+	<p class="stars">★</p>
+	<p class="stars">★</p>
+	<p class="stars">★</p>
+	<img class="user-img" src="roza-png" width="300" height="200">
 </div>
+
+@* <Grid>
+
+</Grid> *@
 
 <style>
 
@@ -15,6 +25,14 @@
 		border-radius: 12px;
 		box-shadow: 2px 2px 2px 4px rgba(0.1,0.1,0.1,0.2);
 		width: 400px;
+	}
+
+	.UserData {
+
+	}
+
+	.ContentsOfTheComment {
+
 	}
 
 	.reject-btn {
@@ -39,6 +57,20 @@
 		right: 10px;
 	}
 
+	.user-img {
+		width: 100px; 
+		height: 100px;
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+
+	.stars {
+		front-size: 100px;
+		display: flex;
+		flex-direction: column;
+	}
+
 </style>
 
 @code
@@ -49,6 +81,4 @@
 	[Parameter]
 	public string Description { get; set; } = "-";
 
-	[Parameter]
-	public int Id { get; set; } = 0;
 }
