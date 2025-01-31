@@ -1,0 +1,48 @@
+﻿@page "/CreateDonation"
+<h3>MoneyRequestCreationPage</h3>
+
+@code {
+
+}
+
+<div class="grid-container">
+    <div class="grid-item">
+
+        <label>Название заявки:</label>
+    </div>
+    <div class="grid-item">
+       
+    </div>
+    <div class="grid-item">
+        <ComponentA Title="Third Component A" />
+    </div>
+    <div class="grid-item">
+        <ComponentA Title="Fourth Component A" />
+    </div>
+    <div class="grid-item">
+        <input type="text" id="requestName" name="requestName" required>
+    </div>
+    <div class="grid-item">
+        <ComponentB />
+    </div>
+    <div class="grid-item">
+        <ComponentB />
+    </div>
+</div>
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 10px;
+    }
+
+    .grid-item {
+        padding: 10px;
+    }
+
+    .grid-item:nth-child(4) {
+        grid-row: span 2;
+    }
+</style>
