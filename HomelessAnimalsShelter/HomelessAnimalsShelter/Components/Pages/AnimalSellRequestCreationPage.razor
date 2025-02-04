@@ -61,6 +61,14 @@
         border-radius: 8px;
     }
 
+    .tag-list-container {
+        height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
     @@media (max-width: 768px) {
         .form-container {
             flex-direction: column;
@@ -91,9 +99,15 @@
 
         <div class="form-group">
             <label>Выберите теги:</label>
-            <InputNumber TValue="decimal?" @bind-Value="animalModel.Amount"
-                         placeholder="12345"
-                         class="form-control" />
+            <div class="tag-list-container">
+                @foreach (var item in TagList.Keys.ToList())
+                {
+                    <label>
+                        <input type="checkbox" @bind="TagList[item]" /> @item
+                    </label>
+                    <br />
+                }
+            </div>
         </div>
     </div>
 
@@ -113,11 +127,19 @@
 </EditForm>
 
 @code {
+    private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
     private AnimalModel animalModel = new AnimalModel();
 
     private void HandleSubmit()
     {
         Console.WriteLine($"Заявка создана: {animalModel.Title}, {animalModel.Description}");
+        foreach (var tag in TagList)
+        {
+            if (tag.Value)
+            {
+                Console.WriteLine($"Selected Tag: {tag.Key}");
+            }
+        }
     }
 
     public class AnimalModel
@@ -131,5 +153,19 @@
 
         [Required(ErrorMessage = "Добавьте описание!")]
         public string Description { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        TagList.Add("TAG1", false);
+        TagList.Add("TAG2", false);
+        TagList.Add("TAG3", false);
+        TagList.Add("TAG4", false);
+        TagList.Add("TAG5", false);
+        TagList.Add("TAG6", false);
+        TagList.Add("TAG7", false);
+        TagList.Add("TAG8", false);
+        TagList.Add("TAG9", false);
+        TagList.Add("TAG10", false);
     }
 }
