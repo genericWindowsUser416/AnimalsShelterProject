@@ -1,0 +1,136 @@
+﻿@page "/CreateDonation"
+@using System.ComponentModel.DataAnnotations
+
+<style>
+    h3 {
+        font-size: 36px;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-container {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        font-size: 1.1rem;
+    }
+
+    .left-column {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .right-column {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .create-button {
+        align-self: flex-end;
+        padding: 20px 60px;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-size: 1.3rem;
+        min-width: 220px;
+        text-align: center;
+    }
+
+    .create-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .form-group label {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .form-control {
+        font-size: 1.1rem;
+        padding: 12px;
+        width: 100%;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+    }
+
+    @@media (max-width: 768px) {
+        .form-container {
+            flex-direction: column;
+            font-size: 1rem;
+        }
+        
+        .create-button {
+            width: 100%;
+            padding: 18px;
+        }
+    }
+</style>
+
+<h3>Создание заявки на сборы</h3>
+
+<EditForm Model="@requestModel" OnValidSubmit="HandleSubmit" class="form-container">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="left-column">
+        <div class="form-group">
+            <label>Название заявки:</label>
+            <InputText @bind-Value="requestModel.Title"
+                       placeholder="Введите название"
+                       class="form-control" />
+                       <br/>
+                       <br/>
+                       <br/>
+        </div>
+
+        <div class="form-group">
+            <label>Необходимое количество денег в рублях:</label>
+            <InputNumber TValue="decimal?" @bind-Value="requestModel.Amount"
+                         placeholder="12345"
+                         class="form-control" />
+        </div>
+    </div>
+
+    <div class="right-column">
+        <div class="form-group">
+            <label>Описание заявки:</label>
+            <InputTextArea @bind-Value="requestModel.Description"
+                           placeholder="Опишите заявку"
+                           class="form-control"
+                           rows="8" />
+        </div>
+
+        <button type="submit" class="create-button">
+            СОЗДАТЬ
+        </button>
+    </div>
+</EditForm>
+
+@code {
+    private RequestModel requestModel = new RequestModel();
+
+    private void HandleSubmit()
+    {
+        Console.WriteLine($"Заявка создана: {requestModel.Title}, {requestModel.Amount} руб.");
+    }
+
+    public class RequestModel
+    {
+        [Required(ErrorMessage = "Поле обязательно!")]
+        public string Title { get; set; }
+
+        [Required(ErrorMessage = "Укажите сумму!")]
+        [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
+        public decimal? Amount { get; set; }
+
+        [Required(ErrorMessage = "Добавьте описание!")]
+        public string Description { get; set; }
+    }
+}
