@@ -1,0 +1,185 @@
+﻿@page "/ShelterPageBuyer"
+
+<div class="shelter-container">
+    <div class="header">
+        <h3>Приют QQQ</h3>
+        <p class="contact-info">Контактная информация</p>
+    </div>
+
+    <div class="description">
+        <p>Лучший приют Омска</p>
+    </div>
+
+    <button class="review-button">Оставить отзыв</button>
+
+    <div class="section">
+        <h4>Наши животные</h4>
+        <div class="scroll-container">
+            @for (var i = 0; i < 10; i++)
+            {
+                <div class="animal-item">
+                    <img src="placeholder.jpg" alt="Animal">
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="section">
+        <h4>Наши сборы</h4>
+        <div class="scroll-container">
+            @for (var i = 0; i < 8; i++)
+            {
+                <div class="fund-item">
+                    <img src="fund-placeholder.jpg" alt="Fund">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .shelter-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        background: white;
+    }
+
+    .header h3 {
+        margin: 0;
+        color: #333;
+    }
+
+    .contact-info {
+        color: #666;
+        margin: 5px 0 15px 0;
+    }
+
+    .contact-info:hover {
+            color: #2196F3;
+            text-decoration: underline;
+    }
+
+    .description {
+        margin: 15px 0;
+        color: #444;
+    }
+
+    .review-button {
+        background: dodgerblue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+    }
+
+     .review-button:hover {
+            background: dodgerblue;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+     }
+
+    .section {
+        margin: 25px 0;
+    }
+
+    .section h4 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .scroll-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding-bottom: 10px;
+        scrollbar-width: thin;
+    }
+
+    .animal-item {
+        flex: 0 0 120px;
+        height: 150px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+    }
+
+     .animal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+     }
+
+      .animal-item:hover::after {
+                content: "🐾";
+                position: absolute;
+                bottom: 10px;
+                right: 10px;
+                font-size: 1.5em;
+      }
+
+    .fund-item {
+        flex: 0 0 200px;
+        height: 120px;
+        background: #f0f0f0;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .fund-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .fund-item:hover::before {
+                content: "❤️";
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                font-size: 1.2em;
+                animation: pulse 1s infinite;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+    @@keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.2);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+</style>
