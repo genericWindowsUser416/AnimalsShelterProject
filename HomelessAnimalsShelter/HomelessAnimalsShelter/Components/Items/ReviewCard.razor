@@ -1,7 +1,7 @@
 ﻿<h3>ReviewCard</h3>
 <div class="review-card">
-	<Button Class="reject-btn">Отклонить</Button>
-	<Button Class="accept-btn">Принять</Button>
+	<button Class="reject-btn">Отклонить</button>
+	<button Class="accept-btn">Принять</button>
 	<h3 class="UserData">@Name</h3>
 	<p class="ContentsOfTheComment">@Description</p>
 	<p class="stars">☆</p>
@@ -12,11 +12,19 @@
 	<img class="user-img" src="roza-png" width="300" height="200">
 </div>
 
-@* <Grid>
-
-</Grid> *@
-
 <style>
+
+	.UserData {
+		position: absolute;
+		top: 120px;
+		right: 250px;
+	}
+
+	.ContentsOfTheComment {
+		position: absolute;
+		top: 160px;
+		right: 270px;
+	}
 
 	.review-card {
 		position: relative;
@@ -25,15 +33,9 @@
 		border-radius: 12px;
 		box-shadow: 2px 2px 2px 4px rgba(0.1,0.1,0.1,0.2);
 		width: 400px;
+		height: 250px;
 	}
 
-	.UserData {
-
-	}
-
-	.ContentsOfTheComment {
-
-	}
 
 	.reject-btn {
 		width: 150px;
@@ -44,6 +46,10 @@
 		border-radius: 10px;
 		bottom: 10px;
 		right: 10px;
+	}
+
+	.reject-btn:hover {
+		transform: translateY(-1px);
 	}
 
 	.accept-btn {
@@ -57,6 +63,10 @@
 		right: 10px;
 	}
 
+	.accept-btn:hover {
+		transform: translateY(-1px);
+	}
+
 	.user-img {
 		width: 100px; 
 		height: 100px;
@@ -66,9 +76,10 @@
 	}
 
 	.stars {
-		front-size: 100px;
-		display: flex;
-		flex-direction: column;
+		position: relative;
+		front-size: 10px;
+		left: 170px;
+		bottom: 10px
 	}
 
 </style>
