@@ -2,7 +2,7 @@
     <img src="ANIMAL.jpg" alt="Animal image">
     <hr/>
     <p>@Name</p>
-	<p>@Description</p>
+    <button class="review-button">Подробнее</button>
 </div>
 <style>
     .animal-card {
@@ -34,55 +34,24 @@
         margin-bottom: 1.5rem;
     }
 
-    .amount-btn {
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        background: none;
-        cursor: pointer;
-        font-weight: bold;
-        color: #333;
-        transition: all 0.2s;
-    }
-
-        .amount-btn:hover {
-            border-color: #007bff;
-            color: #007bff;
-        }
-
-        .amount-btn.selected {
-            border-color: #007bff;
-            background-color: #e3f2fd;
-            color: #007bff;
-        }
-
-    .custom-amount input {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid #e0e0e0;
-        border-radius: 8px;
-        margin-bottom: 1.5rem;
-    }
-
-    .custom-amount input.custom-selected {
-        border-color: #007bff;
-    }
-
-    .donate-btn {
-        width: 100%;
-        padding: 14px;
-        background-color: dodgerblue;
+    .review-button {
+        background: dodgerblue;
         color: white;
         border: none;
-        border-radius: 8px;
+        padding: 10px 20px;
+        border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.2s;
+        width: 100%;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        transform: translateY(0);
     }
 
-    .donate-btn:hover 
-    {
-        background-color: dodgerblue;
-    }
+        .review-button:hover {
+            background: dodgerblue;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 </style>
 
 
