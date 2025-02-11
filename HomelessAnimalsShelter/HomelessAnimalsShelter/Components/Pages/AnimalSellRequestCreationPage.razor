@@ -102,38 +102,36 @@
 
         <div class="form-group">
             <label>Выберите теги:</label>
-
-            <InputText @bind-Value="InputtedTagName"
-                       placeholder="Введите название тега"
-                       
-                       class="form-control" 
-                       id="inputField" />
+            <InputText @bind-Value="InputtedTagName" placeholder="Введите название тега" class="form-control" id="inputField" />
 
             <div class="tag-list-container" id="tagListElement">
                 @foreach (var item in TagList.Keys.ToList())
                 {
-                    <label>
+                    <label class="tag-item">
                         <input type="checkbox" @bind="TagList[item]" /> @item
                     </label>
-                    <br />
                 }
             </div>
-            <script>
-                function getChildElements() {
-                    const parentDiv = document.getElementById('tagListElement');
-                    const childElements = parentDiv.children;
 
-                    Array.from(childElements).forEach(child => {
-                        var childInnerText = child.innerText;
-                        console.log(childInnerText);
-                    });
-                }
+        <script>
+            function filterTags() {
+                const inputField = document.getElementById('inputField');
+                const filter = inputField.value.toLowerCase();
+                const tagList = document.getElementById('tagListElement');
+                const tags = tagList.getElementsByClassName('tag-item');
 
-                document.getElementById('inputField').addEventListener('input', function () 
-                {
-                    getChildElements();
+                Array.from(tags).forEach(tag => {
+                    const tagText = tag.innerText.toLowerCase();
+                    if (tagText.includes(filter)) {
+                        tag.style.display = 'block'; // Show the tag
+                    } else {
+                        tag.style.display = 'none'; // Hide the tag
+                    }
                 });
-            </script>
+            }
+
+            document.getElementById('inputField').addEventListener('input', filterTags);
+        </script>
 
         </div>
     </div>
