@@ -102,7 +102,14 @@
 
         <div class="form-group">
             <label>Выберите теги:</label>
-            <div class="tag-list-container">
+
+            <InputText @bind-Value="InputtedTagName"
+                       placeholder="Введите название тега"
+                       
+                       class="form-control" 
+                       id="inputField" />
+
+            <div class="tag-list-container" id="tagListElement">
                 @foreach (var item in TagList.Keys.ToList())
                 {
                     <label>
@@ -111,6 +118,23 @@
                     <br />
                 }
             </div>
+            <script>
+                function getChildElements() {
+                    const parentDiv = document.getElementById('tagListElement');
+                    const childElements = parentDiv.children;
+
+                    Array.from(childElements).forEach(child => {
+                        var childInnerText = child.innerText;
+                        console.log(childInnerText);
+                    });
+                }
+
+                document.getElementById('inputField').addEventListener('input', function () 
+                {
+                    getChildElements();
+                });
+            </script>
+
         </div>
     </div>
 
@@ -149,6 +173,7 @@
 @code {
     private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
     private AnimalModel animalModel = new AnimalModel();
+    public string InputtedTagName;
 
     private void HandleSubmit()
     {
@@ -188,4 +213,6 @@
         TagList.Add("TAG9", false);
         TagList.Add("TAG10", false);
     }
+
+
 }
