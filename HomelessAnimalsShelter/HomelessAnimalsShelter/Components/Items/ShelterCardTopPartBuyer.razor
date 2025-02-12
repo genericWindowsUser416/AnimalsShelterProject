@@ -1,0 +1,87 @@
+﻿
+<style>
+    .animal-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 2px 2px 2px 4px rgba(0.1,0.1,0.1,0.2);
+        width: 250px;
+    }
+
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid #ccc;
+        margin: 1em 0;
+        padding: 0;
+    }
+
+    .header {
+        text-align: center;
+        color: blue;
+        margin-bottom: 1.5rem;
+    }
+
+    .amount-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .review-button {
+        background: dodgerblue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 50%;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+        text-align: center;
+    }
+
+        .review-button:hover {
+            background: dodgerblue;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+    .top-part 
+    {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .top-part p 
+    {
+        width: 80%;
+        margin: 0;
+        flex-grow: 1;
+        margin: 0;
+        font-size: 2rem;
+        text-align: center;
+    }
+</style>
+
+<div class="top-part">
+    <p>@Name</p>
+    <button class="review-button">Написать отзыв</button>
+    <br />
+</div>
+
+@code 
+{
+    [Parameter]
+    public string Name { get; set; } = "-";
+
+    [Parameter]
+    public string Description { get; set; } = "-";
+
+    [Parameter]
+    public int Id { get; set; } = 0;
+}
