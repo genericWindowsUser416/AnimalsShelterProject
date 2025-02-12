@@ -1,0 +1,108 @@
+﻿@page "/ShelterCreationPage"
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .input-hint {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        pointer-events: none;
+        transition: 0.2s;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    .create-button {
+        background-color: dodgerblue;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .create-button:hover {
+        transform: translateY(-2px);
+    }
+
+
+    h3 {
+        margin-bottom: 0.5rem;
+    }
+
+    .input-hint {
+        position: absolute;
+        left: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #666;
+        pointer-events: none;
+        transition: 0.2s;
+        opacity: 1;
+    }
+
+    input:not(:placeholder-shown) + .input-hint,
+    textarea:not(:placeholder-shown) + .input-hint {
+        opacity: 0;
+    }
+</style>
+
+<div class="form-container">
+    <form @onsubmit="HandleSubmit">
+        <h3>Название приюта:</h3>
+        <div class="input-group">
+            <input @bind="shelter.Name" />
+        </div>
+
+        <h3>Месторасположение вашего приюта:</h3>
+        <div class="input-group">
+            <input @bind="shelter.Address" />
+        </div>
+
+        <h3>Описание приюта:</h3>
+        <div class="input-group">
+            <textarea @bind="shelter.Description"></textarea>
+        </div>
+
+        <button type="submit" class="create-button">
+            СОЗДАТЬ
+        </button>
+    </form>
+</div>
+
+@code {
+    private Shelter shelter = new Shelter();
+
+    private void HandleSubmit()
+    {
+    }
+
+  public class Shelter
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+    }
+}
