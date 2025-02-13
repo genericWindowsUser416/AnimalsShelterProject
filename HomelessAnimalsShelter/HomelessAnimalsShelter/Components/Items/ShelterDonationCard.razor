@@ -2,9 +2,10 @@
 
 <div class="DonateCard">
 	<button class="ToDonate-btn">Пожертвовать</button>
-	<p class="text">Пожертвование в приют: "Название приюта" "Название пожертвования"</p>
-	<Progress Class="DonateProgress">
-		<ProgressBar Width="60" Label="60%" Height="30"/>
+	<p>Пожертвование в приют: "Название приюта"</p>
+	<p>"Название пожертвования"</p>
+	<Progress Class="DonateProgress" Height="30">
+		<ProgressBar Width="60" Label="60%"/>
 	</Progress>
 </div>
 
@@ -12,30 +13,34 @@
 <style>
 
 	.DonateCard {
-		height: 150px;
+		height: 200px;
 		width: 1300px;
 		position: absolute;
-		border: 3px solid black;
-		border-radius: 10px;
+		background: white;
+		border-radius: 12px;
+		box-shadow: 2px 2px 2px 4px rgba(0.1,0.1,0.1,0.2);
 	}
 
-	.text {
+	p {
 		font-size: 20px;
 		display: flex;
 		justify-content: center;
 	}
 
 	.DonateProgress {
-/* 		display: flex;
-		justify-content: center;
-		padding: 10px; */
+		margin: 10px;
+		font-size: 20px;
+	}
+
+	.ToDonate-btn:hover {
+		transform: translateY(-1px);
 	}
 
 	.ToDonate-btn {
 		width: 150px;
 		height: 50px;
 		position: absolute;
-		background: lightblue;
+		background: dodgerblue;
 		border: 12px;
 		border-radius: 10px;
 		bottom: 10px;
