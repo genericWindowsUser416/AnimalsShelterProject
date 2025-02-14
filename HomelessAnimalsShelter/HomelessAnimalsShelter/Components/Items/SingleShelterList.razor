@@ -6,12 +6,12 @@
     .animal-cards {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
+        gap: 20px 20px;
     }
 
     .long-break {
         border: none;
-        height: 8px;    
+        height: 6px;    
         background-color: transparent;
         width: 100%;
         margin: 20px 0;
@@ -19,7 +19,9 @@
 
 </style>
 <ShelterCardTopPartBuyer Name="SHELTER NAME HERE" />
-
+<hr class="long-break">
+<ShelterDonationCard></ShelterDonationCard>
+<hr class="long-break">
 <div class="animal-cards">
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
@@ -27,11 +29,11 @@
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
-        <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
 </div>
+<hr class="long-break">
 <hr class="long-break">
 @code {
 
