@@ -18,7 +18,7 @@
     }
 
 </style>
-<ShelterCardTopPartBuyer Name="SHELTER NAME HERE" />
+<ShelterCardTopPartBuyer Name="@Name" />
 <hr class="long-break">
 <ShelterDonationCard></ShelterDonationCard>
 <hr class="long-break">
@@ -35,6 +35,12 @@
 </div>
 <hr class="long-break">
 <hr class="long-break">
-@code {
+@code 
+{
+    [Parameter]
+    public string Name { get; set; } = "-";
+
+    [Parameter]
+    public int Id { get; set; } = 0;
 
 }
