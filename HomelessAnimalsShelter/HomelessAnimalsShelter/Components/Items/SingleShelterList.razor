@@ -1,0 +1,36 @@
+﻿@rendermode InteractiveServer
+@using HomelessAnimalsShelter.UI.Components.Items
+
+<style>
+
+    .animal-cards {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .long-break {
+        border: none;
+        height: 4px;
+        background-color: transparent;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+</style>
+<ShelterCardTopPartBuyer Name="SHELTER NAME HERE" />
+
+<div class="animal-cards">
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+    <AnimalCard Name="ANIMAL NAME HERE" />
+</div>
+<hr class="long-break">
+@code {
+
+}
