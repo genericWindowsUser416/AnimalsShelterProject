@@ -4,13 +4,14 @@
 <style>
 
     .animal-cards {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 5px;
     }
 
     .long-break {
         border: none;
-        height: 4px;
+        height: 8px;    
         background-color: transparent;
         width: 100%;
         margin: 20px 0;
@@ -26,6 +27,7 @@
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
+        <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
     <AnimalCard Name="ANIMAL NAME HERE" />
