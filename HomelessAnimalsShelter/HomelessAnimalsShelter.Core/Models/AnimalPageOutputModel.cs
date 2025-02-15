@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomelessAnimalsShelter.Core.OutputModels
+namespace HomelessAnimalsShelter.Core.Models
 {
     public class AnimalOutputModel
     {
