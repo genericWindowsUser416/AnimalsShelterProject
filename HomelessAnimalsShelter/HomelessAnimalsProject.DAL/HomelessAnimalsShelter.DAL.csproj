@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj" />
+	</ItemGroup>
+	
 </Project>
