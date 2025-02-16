@@ -1,4 +1,4 @@
-﻿namespace Zooparchik.Core.Dtos
+﻿namespace HomelessAnimalsShelter.Core.Dtos
 {
 	public class AnimalDto
 	{
