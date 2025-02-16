@@ -6,6 +6,10 @@ namespace HomelessAnimalsShelter.BLL.Mappers
 {
 	public class AnimalMapperProfile:Profile
 	{
-
+		public AnimalMapperProfile()
+		{
+			CreateMap<AnimalDto, AnimalPageOutputModel>();
+			CreateMap<AnimalDto, AnimalCardOutputModel>();
+		}
 	}
 }

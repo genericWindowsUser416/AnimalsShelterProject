@@ -1,6 +1,6 @@
 ﻿namespace HomelessAnimalsShelter.Core.Models
 {
-    public class AnimalOutputModel
+    public class AnimalPageOutputModel
     {
         public int Id { get; set; }
 
