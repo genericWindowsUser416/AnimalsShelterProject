@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <ProjectReference Include="..\HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj" />
   </ItemGroup>
 
 </Project>
