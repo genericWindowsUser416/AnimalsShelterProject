@@ -1,6 +1,6 @@
 ﻿namespace HomelessAnimalsShelter.Core.Dtos
 {
-	internal class ReviewDto
+	public class ReviewDto
 	{
 		public int Id { get; set; }
 
