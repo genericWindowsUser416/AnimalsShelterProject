@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HomelessAnimalsShelter.Core.Dtos
+﻿namespace HomelessAnimalsShelter.Core.Dtos
 {
-    internal class DonationDto
+    public class DonationDto
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public int ShelterId { get; set; }
+
+        public Decimal NeededMoney { get; set; }
+
+        public Decimal CollectedMoney { get; set; }
+
     }
 }
