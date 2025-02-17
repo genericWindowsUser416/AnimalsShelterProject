@@ -8,7 +8,7 @@
 
         public string Description { get; set; }
 
-        public int ShelterId { get; set; }
+        public int Shelter_Id { get; set; }
 
         public Decimal NeededMoney { get; set; }
 
