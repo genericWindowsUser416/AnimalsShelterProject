@@ -2,6 +2,7 @@
 using HomelessAnimalsShelter.Core.Models;
 using HomelessAnimalsShelter.BLL.Mappers;
 using HomelessAnimalsShelter.DAL;
+
 namespace HomelessAnimalsShelter.BLL
 {
     public class UserManager

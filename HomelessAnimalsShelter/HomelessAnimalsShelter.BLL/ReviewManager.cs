@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using HomelessAnimalsShelter.BLL.Mappers;
 using HomelessAnimalsShelter.Core.Models;
+using HomelessAnimalsShelter.BLL.Mappers;
 using HomelessAnimalsShelter.DAL;
 
 namespace HomelessAnimalsShelter.BLL
 {
-	internal class ReviewManager
+	public class ReviewManager
 	{
 		private ReviewRepository _repository;
 		private Mapper _mapper;

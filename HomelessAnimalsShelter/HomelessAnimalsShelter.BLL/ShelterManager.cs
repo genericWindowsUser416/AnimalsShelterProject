@@ -22,6 +22,11 @@ namespace HomelessAnimalsShelter.BLL
 			_repository = new ShelterRepository();
 		}
 
+		public List<ShelterOutputModel> GetAllUsers()
+		{
+			return _mapper.Map<List<ShelterOutputModel>>(_repository.GetAllShelters());
+		}
+
 		public ShelterOutputModel GetShelterById(int id)
 		{
 			return _mapper.Map<ShelterOutputModel>(_repository.GetShelterById(id));
