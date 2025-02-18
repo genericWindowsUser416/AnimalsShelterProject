@@ -22,14 +22,14 @@ namespace HomelessAnimalsShelter.BLL
 			_repository = new ReviewRepository();
 		}
 
-		public List<AnimalCardOutputModel> GetAllReviews()
+		public List<ReviewOutputModel> GetAllReviews()
 		{
-			return _mapper.Map<List<AnimalCardOutputModel>>(_repository.GetAllReviews());
+			return _mapper.Map<List<ReviewOutputModel>>(_repository.GetAllReviews());
 		}
 
-		public AnimalPageOutputModel GetReviewsById(int id)
+		public ReviewOutputModel GetReviewById(int id)
 		{
-			return _mapper.Map<AnimalPageOutputModel>(_repository.GetReviewById(id));
+			return _mapper.Map<ReviewOutputModel>(_repository.GetReviewById(id));
 		}
 	}
 }
