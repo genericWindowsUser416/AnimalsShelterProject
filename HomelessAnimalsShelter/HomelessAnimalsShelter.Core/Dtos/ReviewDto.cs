@@ -4,11 +4,11 @@
 	{
 		public int Id { get; set; }
 
-		public int Buyer_Id { get; set; }
-
-		public int Shelter_Id { get; set; }
-
 		public string Description { get; set; }
+
+		public UserDto User { get; set; }
+
+		public ShelterDto Shelter { get; set; }
 
 		public int Rating { get; set; }
 	}

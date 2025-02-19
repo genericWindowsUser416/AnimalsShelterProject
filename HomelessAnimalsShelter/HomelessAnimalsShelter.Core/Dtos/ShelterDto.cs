@@ -10,8 +10,10 @@
 
 		public string City { get; set; }
 
-		public int Buyer_Id { get; set; }
+		public List<DonationDto> DonationDtos { get; set; }
 
-		public List<int> AnimalList { get; set; } = new List<int>();
+		public UserDto User { get; set; }
+
+		public List<AnimalDto> AnimalDtos { get; set; }
 	}
 }
