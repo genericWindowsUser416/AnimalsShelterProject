@@ -1,12 +1,34 @@
 using HomelessAnimalsShelter.UI.Components;
-
+using HomelessAnimalsShelter.DAL;
+using HomelessAnimalsShelter.Core.Dtos;
 namespace HomelessAnimalsShelter
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+			Context context = new Context();
+            //context.Database.EnsureCreated();
+            Console.WriteLine("qqq www");
+
+			//UserDto userDto = new UserDto();
+			//userDto.Users = new List<StudentDto>()
+			//{
+			//    new StudentDto() { Age = 11, Name = "www" },
+			//    new StudentDto() { Age = 11, Name = "eee"},
+			//    new StudentDto() { Age = 11, Name = "rrr"},
+			//    new StudentDto() { Age = 11, Name = "ttt" }
+			//};
+
+			//context.Groups.Add(groupDto);
+			//context.SaveChanges();
+
+			foreach (var i in context.Users.ToList())
+			{
+			    Console.WriteLine($"{i.Id} {i.Login}");
+			}
+
+			var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddBlazorBootstrap();
             // Add services to the container.
             builder.Services.AddRazorComponents()

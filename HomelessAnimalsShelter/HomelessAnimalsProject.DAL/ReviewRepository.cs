@@ -8,8 +8,6 @@ namespace HomelessAnimalsShelter.DAL
 		{
 			var r1 = new ReviewDto()
 			{
-				Buyer_Id = 1,
-				Shelter_Id = 1,
 				Id = 1,
 				Rating = 5,
 				Description = "Всё супер"
@@ -17,8 +15,6 @@ namespace HomelessAnimalsShelter.DAL
 
 			var r2 = new ReviewDto()
 			{
-				Buyer_Id = 2,
-				Shelter_Id = 1,
 				Id = 2,
 				Rating = 3,
 				Description = "Нормально"
@@ -26,8 +22,6 @@ namespace HomelessAnimalsShelter.DAL
 
 			var r3 = new ReviewDto()
 			{
-				Buyer_Id = 3,
-				Shelter_Id = 2,
 				Id = 3,
 				Rating = 2,
 				Description = "QQQ"
@@ -40,8 +34,6 @@ namespace HomelessAnimalsShelter.DAL
 		{
 			return new ReviewDto()
 			{
-				Buyer_Id = 3,
-				Shelter_Id = 5,
 				Id = 4,
 				Rating = 4,
 				Description = "WWW"

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HomelessAnimalsShelter.BLL\HomelessAnimalsShelter.BLL.csproj" />
     <ProjectReference Include="..\HomelessAnimalsShelter.Core\HomelessAnimalsShelter.Core.csproj" />
   </ItemGroup>
 

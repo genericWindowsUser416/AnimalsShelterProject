@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using HomelessAnimalsShelter.Core.Dtos;
 
-namespace HomelessAnimalsShelter.Core
+namespace HomelessAnimalsShelter.DAL
 {
 	public class Context : DbContext
 	{
@@ -19,7 +19,7 @@ namespace HomelessAnimalsShelter.Core
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			string connectionString = "";
+			string connectionString = Environment.GetEnvironmentVariable("HOMELESSANIMALSSHELTERIIN_ACCESS")!;
 			optionsBuilder.UseNpgsql(connectionString);
 		}
 	}

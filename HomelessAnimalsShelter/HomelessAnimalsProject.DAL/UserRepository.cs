@@ -10,24 +10,21 @@ namespace HomelessAnimalsShelter.DAL
 			{
 				Id = 1,
 				Login = "oleg",
-				Password = "qqqq",
-				UserRole = 2
+				Password = "qqqq"
 			};
 
 			var u2 = new UserDto()
 			{
 				Id = 2,
 				Login = "gleb",
-				Password = "wwww",
-				UserRole = 3
+				Password = "wwww"
 			};
 
 			var u3 = new UserDto()
 			{
 				Id = 3,
 				Login = "qqqwwww",
-				Password = "oleggleb",
-				UserRole = 2
+				Password = "oleggleb"
 			};
 
 			return new List<UserDto> { u1, u2, u3 };
@@ -39,8 +36,7 @@ namespace HomelessAnimalsShelter.DAL
 			{
 				Id = id,
 				Login = "user3000",
-				Password = "wwwqqq",
-				UserRole = 2
+				Password = "wwwqqq"
 			};
 		}
 	}
