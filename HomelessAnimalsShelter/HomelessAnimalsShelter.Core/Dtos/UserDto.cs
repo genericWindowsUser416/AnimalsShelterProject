@@ -8,6 +8,6 @@
 
 		public string? Password { get; set; }
 
-		public int? UserRole { get; set; }
+		public UserType UserType { get; set; }
 	}
 }
