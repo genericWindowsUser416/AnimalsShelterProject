@@ -9,19 +9,58 @@ namespace HomelessAnimalsShelter
         {
 			Context context = new Context();
             //context.Database.EnsureCreated();
-            Console.WriteLine("qqq www");
+            Console.WriteLine("qqq www ddd");
 
 			//UserDto userDto = new UserDto();
-			//userDto.Users = new List<StudentDto>()
+			//userDto.Users = new List<UserDto>()
 			//{
-			//    new StudentDto() { Age = 11, Name = "www" },
-			//    new StudentDto() { Age = 11, Name = "eee"},
-			//    new StudentDto() { Age = 11, Name = "rrr"},
-			//    new StudentDto() { Age = 11, Name = "ttt" }
+			//    new UserDto() { },
+			//    new UserDto() { },
+			//    new UserDto() { }
 			//};
 
 			//context.Groups.Add(groupDto);
 			//context.SaveChanges();
+
+			UserRepository userRepository = new UserRepository();
+
+			int userId = 3;
+			UserDto user = userRepository.GetUserById(userId);
+			if (user != null)
+			{
+				Console.WriteLine($"User ID: {user.Id}, Login: {user.Login}, UserType: {user.UserType}");
+			}
+			else
+			{
+				Console.WriteLine("User not found.");
+			}
+
+			//         UserDto user3 = new UserDto()
+			//         {
+			//             Id = 3,
+			//	Login = "123456789",
+			//	Password = "qwertyuiop",
+			//             UserType = Core.UserType.Seller
+			//};
+
+			//         context.Users.Add(user3);
+
+			//UserDto user4 = new UserDto()
+			//{
+			//	Id = 4,
+			//	Login = "gleb30010",
+			//	Password = "qqqwwwdd1234d",
+			//	UserType = Core.UserType.Admin
+			//};
+
+			//context.Users.Add(user4);
+
+			//context.SaveChanges();
+
+
+
+
+
 
 			foreach (var i in context.Users.ToList())
 			{
