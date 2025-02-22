@@ -17,13 +17,13 @@ namespace HomelessAnimalsShelter.DAL
 			using (Context context = new Context())
 			{
 				return context.Reviews
-							  .Select(s => new ReviewDto
+							  .Select(r => new ReviewDto
 							  {
-								  Id = s.Id,
-								  Description = s.Description,
-								  User = s.User,
-								  Shelter = s.Shelter,
-								  Rating = s.Rating
+								  Id = r.Id,
+								  Description = r.Description,
+								  User = r.User,
+								  Shelter = r.Shelter,
+								  Rating = r.Rating
 							  })
 							  .ToList();
 			}
