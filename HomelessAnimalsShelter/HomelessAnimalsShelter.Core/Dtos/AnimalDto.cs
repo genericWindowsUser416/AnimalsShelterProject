@@ -9,5 +9,7 @@
 		public string? Description { get; set; }
 
 		public List<TagDto>? TagDtos { get; set; }
-	}
+
+        public ShelterDto? Shelter { get; set; }
+    }
 }

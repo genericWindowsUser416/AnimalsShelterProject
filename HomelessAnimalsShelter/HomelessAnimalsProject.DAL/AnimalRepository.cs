@@ -22,7 +22,8 @@ namespace HomelessAnimalsShelter.DAL
                                   Id = a.Id,
                                   Name = a.Name,
                                   Description = a.Description,
-                                  TagDtos = a.TagDtos
+                                  TagDtos = a.TagDtos,
+                                  Shelter = a.Shelter
                               })
                               .ToList();
             }
