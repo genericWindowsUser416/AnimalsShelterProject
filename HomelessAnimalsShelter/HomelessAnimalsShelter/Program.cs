@@ -24,15 +24,22 @@ namespace HomelessAnimalsShelter
 
 			UserRepository userRepository = new UserRepository();
 
-			int userId = 3;
-			UserDto user = userRepository.GetUserById(userId);
-			if (user != null)
+			//int userId = 3;
+			//UserDto user = userRepository.GetUserById(userId);
+			//if (user != null)
+			//{
+			//	Console.WriteLine($"User ID: {user.Id}, Login: {user.Login}, UserType: {user.UserType}");
+			//}
+			//else
+			//{
+			//	Console.WriteLine("User not found.");
+			//}
+
+			List<UserDto> users3000 = userRepository.GetAllUsers();
+			Console.WriteLine("looking for users");
+			foreach (UserDto user in users3000)
 			{
 				Console.WriteLine($"User ID: {user.Id}, Login: {user.Login}, UserType: {user.UserType}");
-			}
-			else
-			{
-				Console.WriteLine("User not found.");
 			}
 
 			//         UserDto user3 = new UserDto()
@@ -56,7 +63,6 @@ namespace HomelessAnimalsShelter
 			//context.Users.Add(user4);
 
 			//context.SaveChanges();
-
 
 
 
