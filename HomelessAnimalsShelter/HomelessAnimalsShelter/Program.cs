@@ -9,162 +9,60 @@ namespace HomelessAnimalsShelter
         {
 			Context context = new Context();
             //context.Database.EnsureCreated();
-            Console.WriteLine("qqq www ddd");
+            Console.WriteLine("Started");
 
-            //UserDto userDto = new UserDto();
-            //userDto.Users = new List<UserDto>()
+            //foreach (var i in context.Users.ToList())
             //{
-            //    new UserDto() { },
-            //    new UserDto() { },
-            //    new UserDto() { }
-            //};
+            //    Console.WriteLine($"{i.Id} {i.Login}");
+            //}
 
-            //context.Groups.Add(groupDto);
+            //var users = new List<UserDto>
+            //{
+            //    new UserDto { Id = 1, Login = "user1", Password = "password1", UserType = Core.UserType.Seller },
+            //    new UserDto { Id = 2, Login = "user2", Password = "password2", UserType = Core.UserType.Seller },
+            //    new UserDto { Id = 3, Login = "123456789", Password = "qwertyuiop", UserType = Core.UserType.Admin }
+            //};
+            //context.Users.AddRange(users);
+            //context.SaveChanges();
+
+            //var shelters = new List<ShelterDto>
+            //{
+            //    new ShelterDto { Id = 1, Name = "Приют Омска", Description = "Хороший приют", City = "Омск", User = users[0] },
+            //    new ShelterDto { Id = 2, Name = "Приют Глеба", Description = "Лучший приют", City = "Москва", User = users[1] }
+            //};
+            //context.Shelters.AddRange(shelters);
+            //context.SaveChanges();
+
+            //var donations = new List<DonationDto>
+            //{
+            //    new DonationDto { Id = 1, Name = "На корм", Description = "Дайте денег", Shelter = shelters[0], NeededMoney = 5000, CollectedMoney = 0 },
+            //    new DonationDto { Id = 2, Name = "На нужные вещи", Description = "Описание здесь", Shelter = shelters[1], NeededMoney = 1000, CollectedMoney = 0 }
+            //};
+            //context.Donations.AddRange(donations);
+            //context.SaveChanges();
+
+            //var tags = new List<TagDto>
+            //{
+            //    new TagDto { Id = 1, Name = "Собака" },
+            //    new TagDto { Id = 2, Name = "Кошка" },
+            //    new TagDto { Id = 3, Name = "Быстрая" },
+            //    new TagDto { Id = 4, Name = "Бобёр" },
+            //    new TagDto { Id = 5, Name = "Медленное" }
+            //};
+            //context.Tags.AddRange(tags);
+            //context.SaveChanges();
+
+            //var animals = new List<AnimalDto>
+            //{
+            //    new AnimalDto { Id = 1, Name = "Oleg", Description = "Описание здесь", TagDtos = new List<TagDto> { tags[1], tags[2] }, Shelter = shelters[0] },
+            //    new AnimalDto { Id = 2, Name = "Gleb", Description = "Описание будет здесь", TagDtos = new List<TagDto> { tags[3], tags[2] }, Shelter = shelters[1] }
+            //};
+            //context.Animals.AddRange(animals);
             //context.SaveChanges();
 
 
 
-            //int userId = 3;
-            //UserDto user = userRepository.GetUserById(userId);
-            //if (user != null)
-            //{
-            //	Console.WriteLine($"User ID: {user.Id}, Login: {user.Login}, UserType: {user.UserType}");
-            //}
-            //else
-            //{
-            //	Console.WriteLine("User not found.");
-            //}
-            UserRepository userRepository = new UserRepository();
-            List<UserDto> users3000 = userRepository.GetAllUsers();
-			Console.WriteLine("looking for users");
-			foreach (UserDto user in users3000)
-			{
-				Console.WriteLine($"User ID: {user.Id}, Login: {user.Login}, UserType: {user.UserType}");
-			}
-
-            //         UserDto user3 = new UserDto()
-            //         {
-            //             Id = 3,
-            //	Login = "123456789",
-            //	Password = "qwertyuiop",
-            //             UserType = Core.UserType.Seller
-            //};
-
-            //         context.Users.Add(user3);
-
-            //ShelterDto shelterAAA = new ShelterDto()
-            //{
-            //    Id = 1,
-            //    Name = "Приют Омска",
-            //    Description = "Хороший приют",
-            //    City = "Омск",
-            //    User = context.Users.Where(u => u.Id == 3).First()
-            //};
-
-            //context.Shelters.Add(shelterAAA);
-
-            //ShelterDto shelterBBB = new ShelterDto()
-            //{
-            //    Id = 2,
-            //    Name = "Приют Глеба",
-            //    Description = "Лучший приют",
-            //    City = "Москва",
-            //    User = context.Users.Where(u => u.Id == 2).First()
-            //};
-            //context.Shelters.Add(shelterBBB);
-
-
-            //DonationDto donationAAA = new DonationDto()
-            //{
-            //    Id = 1,
-            //    Name = "На корм",
-            //    Description = "Дайте денег",
-            //    Shelter = context.Shelters.Where(s => s.Id == 1).First(),
-            //    NeededMoney = 5000,
-            //    CollectedMoney = 0
-            //};
-            //DonationDto donationBBB = new DonationDto()
-            //{
-            //    Id = 2,
-            //    Name = "На нужные вещи",
-            //    Description = "Описание здесь",
-            //    Shelter = context.Shelters.Where(s => s.Id == 2).First(),
-            //    NeededMoney = 1000,
-            //    CollectedMoney = 0
-            //};
-
-            //context.Donations.Add(donationAAA);
-            //context.Donations.Add(donationBBB);
-
-            //TagDto TagAAA = new TagDto()
-            //{
-            //    Id = 1,
-            //    Name = "Собака"
-            //};
-
-            //TagDto TagBBB = new TagDto()
-            //{
-            //    Id = 2,
-            //    Name = "Кошка"
-            //};
-
-            //TagDto TagCCC = new TagDto()
-            //{
-            //    Id = 3,
-            //    Name = "Быстрая"
-            //};
-
-            //TagDto TagDDD = new TagDto()
-            //{
-            //    Id = 4,
-            //    Name = "Бобёр"
-            //};
-
-            //context.Tags.Add(TagAAA);
-            //context.Tags.Add(TagBBB);
-            //context.Tags.Add(TagCCC);
-            //context.Tags.Add(TagDDD);
-
-
-            AnimalDto AnimalAAA = new AnimalDto()
-            {
-                Id = 1,
-                Name = "Oleg",
-                Description = "Описание здесь",
-                TagDtos = new List<TagDto>
-                {
-                    context.Tags.Where(t => t.Id == 2).FirstOrDefault(),
-                    context.Tags.Where(t => t.Id == 3).FirstOrDefault()
-                }
-            };
-
-            AnimalDto AnimalBBB = new AnimalDto()
-            {
-                Id = 2,
-                Name = "Gleb",
-                Description = "Описание будет здесь",
-                TagDtos = new List<TagDto>
-                {
-                    context.Tags.Where(t => t.Id == 4).FirstOrDefault(),
-                    context.Tags.Where(t => t.Id == 3).FirstOrDefault()
-                }
-            };
-
-            context.Animals.Add(AnimalAAA);
-            context.Animals.Add(AnimalBBB);
-
-            context.SaveChanges();
-
-
-
-
-
-            foreach (var i in context.Users.ToList())
-			{
-			    Console.WriteLine($"{i.Id} {i.Login}");
-			}
-
-			var builder = WebApplication.CreateBuilder(args);
+            var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddBlazorBootstrap();
             // Add services to the container.
             builder.Services.AddRazorComponents()
