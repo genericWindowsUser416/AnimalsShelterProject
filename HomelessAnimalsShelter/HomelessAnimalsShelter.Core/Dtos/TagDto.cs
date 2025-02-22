@@ -4,8 +4,8 @@
 	{
 		public int Id { get; set; }
 
-		public string Name { get; set; }
+		public string? Name { get; set; }
 
-		public List<AnimalDto> AnimalDtos { get; set; }
+		public List<AnimalDto>? AnimalDtos { get; set; }
 	}
 }
