@@ -1,4 +1,4 @@
-﻿
+﻿using HomelessAnimalsShelter.DAL;
 <style>
     .animal-card {
         background: white;
@@ -76,12 +76,14 @@
 
 @code 
 {
+    //dont do this \/, UI must not know of DAL!!!
+    //public string Name { get; set; } = new HomelessAnimalsShelter.DAL.DonationRepository().GetDonationById(1).Name;
     [Parameter]
-    public string Name { get; set; } = "-";
+    public string Name { get; set; }
 
     [Parameter]
-    public string Description { get; set; } = "-";
+    public string Description { get; set; }
 
     [Parameter]
-    public int Id { get; set; } = 0;
+    public int Id { get; set; }
 }
