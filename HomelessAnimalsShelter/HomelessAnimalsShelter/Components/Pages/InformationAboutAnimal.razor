@@ -3,6 +3,37 @@
 @using HomelessAnimalsShelter.UI.Components.Items
 @using HomelessAnimalsShelter.DAL
 @using HomelessAnimalsShelter.Core.Dtos
+
+
+@code
+{
+
+    private AnimalDto animal;
+    private AnimalRepository animalRepository = new AnimalRepository();
+
+    protected override void OnInitialized()
+    {
+        animal = animalRepository.GetAnimalById(@Id);
+        Description = animal.Description;
+    }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Description { get; set; }
+
+    [Parameter]
+    public List<string> TagDtos { get; set; }
+
+
+
+}
+
+
 <style>
     h3 {
         font-size: 36px;
@@ -105,7 +136,7 @@
         <div class="form-group">
             <label>@Name</label>
             <br />
-            <label>описание тут @Description</label>
+            <label>@Description</label>
         </div>
             
     </div>
@@ -114,27 +145,3 @@
 <div class="scrollable-text">
     @Id
 </div>
-
-@code 
-{
-    [Parameter]
-    public int Id { get; set; }
-
-    [Parameter]
-    public string Name { get; set; }
-
-    [Parameter]
-    public string Description { get; set; }
-
-    [Parameter]
-    public List<string> TagDtos { get; set; }
-
-
-    private AnimalDto animal;
-    private AnimalRepository animalRepository = new AnimalRepository();
-
-    protected override void OnInitialized()
-    {
-        animal = animalRepository.GetAnimalById(@Id);
-    }
-}
