@@ -1,5 +1,8 @@
 ﻿@page "/infoAnimal/{Id:int}"
-
+@rendermode InteractiveServer
+@using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.DAL
+@using HomelessAnimalsShelter.Core.Dtos
 <style>
     h3 {
         font-size: 36px;
@@ -101,7 +104,10 @@
     <div class="right-column">
         <div class="form-group">
             <label>@Name</label>
+            <br />
+            <label>описание тут @Description</label>
         </div>
+            
     </div>
 
 </div>
@@ -122,4 +128,13 @@
 
     [Parameter]
     public List<string> TagDtos { get; set; }
+
+
+    private AnimalDto animal;
+    private AnimalRepository animalRepository = new AnimalRepository();
+
+    protected override void OnInitialized()
+    {
+        animal = animalRepository.GetAnimalById(@Id);
+    }
 }

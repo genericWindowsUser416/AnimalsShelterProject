@@ -67,7 +67,9 @@
     {
         @foreach (var animal in animals)
         {
-            <AnimalCard Name="@animal.Name"
+            <AnimalCard 
+                Name = "@animal.Name"
+                Id = "@animal.Id"
             >
             </AnimalCard>
         }
