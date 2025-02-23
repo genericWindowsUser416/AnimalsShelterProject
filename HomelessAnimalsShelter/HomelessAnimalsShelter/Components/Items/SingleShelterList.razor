@@ -31,9 +31,14 @@
 
     private List<DonationDto> donations;
     private DonationRepository donationRepository = new DonationRepository();
+
+    private List<AnimalDto> animals;
+    private AnimalRepository animalRepository = new AnimalRepository();
+
     protected override void OnInitialized()
     {
         donations = donationRepository.GetDonationsByShelterId(@Id);
+        animals = animalRepository.GetAnimalsByShelterId(@Id);
     }
 }
 
@@ -57,15 +62,17 @@
 <hr class="long-break">
 
 <div class="animal-cards">
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
+
+    @if (animals != null && animals.Any())
+    {
+        @foreach (var animal in animals)
+        {
+            <AnimalCard Name="@animal.Name"
+            >
+            </AnimalCard>
+        }
+    }
+
 </div>
 <hr class="long-break">
 <hr class="long-break">

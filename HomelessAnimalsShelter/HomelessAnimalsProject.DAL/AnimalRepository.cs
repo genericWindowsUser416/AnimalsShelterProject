@@ -28,5 +28,13 @@ namespace HomelessAnimalsShelter.DAL
                               .ToList();
             }
         }
-    }
+
+		public List<AnimalDto> GetAnimalsByShelterId(int shelterId)
+		{
+			using (Context context = new Context())
+			{
+				return context.Animals.Where(a => a.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
+			}
+		}
+	}
 }

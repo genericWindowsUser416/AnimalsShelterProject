@@ -2,9 +2,10 @@
   <button class="ToDonate-btn">Пожертвовать</button>
 	<p>@Name</p>
   <p>@Description</p>
-  <Progress Class="DonateProgress" Height="30">
-    <ProgressBar Width="60" Label="60%"/>
-  </Progress>
+	<Progress Class="DonateProgress" Height="30">
+		<ProgressBar Width="@((double)NeededMoney / (double)CollectedMoney * 100)" Label="@(CollectedMoney + " из " + NeededMoney)" />
+	</Progress>
+
 </div>
 
 
