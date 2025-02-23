@@ -9,7 +9,7 @@ namespace HomelessAnimalsShelter
         {
 			Context context = new Context();
             //context.Database.EnsureCreated();
-            Console.WriteLine("Started");
+            Console.WriteLine("Started..");
 
             //foreach (var i in context.Users.ToList())
             //{
