@@ -1,5 +1,7 @@
 ﻿@rendermode InteractiveServer
 @using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.DAL
+@using HomelessAnimalsShelter.Core.Dtos
 
 <style>
 
@@ -18,29 +20,59 @@
     }
 
 </style>
-<ShelterCardTopPartBuyer Name="@Name" />
-<hr class="long-break">
-<ShelterDonationCard></ShelterDonationCard>
-<hr class="long-break">
-<div class="animal-cards">
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-    <AnimalCard Name="ANIMAL NAME HERE" />
-</div>
-<hr class="long-break">
-<hr class="long-break">
-@code 
-{
+
+@code {
+
     [Parameter]
     public string Name { get; set; } = "-";
 
     [Parameter]
     public int Id { get; set; } = 0;
 
+    private List<DonationDto> donations;
+    private DonationRepository donationRepository = new DonationRepository();
+
+    private List<AnimalDto> animals;
+    private AnimalRepository animalRepository = new AnimalRepository();
+
+    protected override void OnInitialized()
+    {
+        donations = donationRepository.GetDonationsByShelterId(@Id);
+        animals = animalRepository.GetAnimalsByShelterId(@Id);
+    }
 }
+
+<ShelterCardTopPartBuyer Name="@Name" />
+<hr class="long-break">
+
+@if (donations != null && donations.Any())
+{
+    @foreach (var donation in donations)
+    {
+        <ShelterDonationCard
+            Name="@donation.Name"
+            Id="@donation.Id"
+            Description="@donation.Description"
+            NeededMoney="@donation.NeededMoney"
+            CollectedMoney="@donation.CollectedMoney">
+        </ShelterDonationCard>
+    }
+}
+
+<hr class="long-break">
+
+<div class="animal-cards">
+
+    @if (animals != null && animals.Any())
+    {
+        @foreach (var animal in animals)
+        {
+            <AnimalCard Name="@animal.Name"
+            >
+            </AnimalCard>
+        }
+    }
+
+</div>
+<hr class="long-break">
+<hr class="long-break">

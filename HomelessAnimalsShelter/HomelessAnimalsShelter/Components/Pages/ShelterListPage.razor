@@ -1,19 +1,28 @@
 ﻿@page "/ShelterList"
 @rendermode InteractiveServer
 @using HomelessAnimalsShelter.UI.Components.Items
-
-<SingleShelterList 
-    Name="shelter3000"
-    Id=0
-    >
-</SingleShelterList>
-
-<SingleShelterList 
-    Name="shelter4000"
-    Id=1
-    >
-</SingleShelterList>
+@using HomelessAnimalsShelter.DAL
+@using HomelessAnimalsShelter.Core.Dtos
 
 @code {
+    private List<ShelterDto> shelters;
+    private ShelterRepository shelterRepository = new ShelterRepository();
+    protected override void OnInitialized()
+    {
+        shelters = shelterRepository.GetAllShelters();
+    }
+}
 
+@if (shelters != null && shelters.Any())
+{
+    @foreach (var shelter in shelters)
+    {
+        <SingleShelterList Name="@shelter.Name"
+                           Id="@shelter.Id">
+        </SingleShelterList>
+    }
+}
+else
+{
+    <p>No shelters?!</p>
 }

@@ -1,17 +1,18 @@
 ﻿<div class="DonateCard">
   <button class="ToDonate-btn">Пожертвовать</button>
-  <p>Пожертвование в приют: "Название приюта"</p>
-  <p>"Название пожертвования"</p>
-  <Progress Class="DonateProgress" Height="30">
-    <ProgressBar Width="60" Label="60%"/>
-  </Progress>
+	<p>@Name</p>
+  <p>@Description</p>
+	<Progress Class="DonateProgress" Height="30">
+		<ProgressBar Width="@((double)NeededMoney / (double)CollectedMoney * 100)" Label="@(CollectedMoney + " из " + NeededMoney)" />
+	</Progress>
+
 </div>
 
 
 <style>
 
   .DonateCard {
-	  max-width: 100%
+	max-width: 100%;
     height: 200px;
     position: relative;
     background: white;
@@ -48,6 +49,21 @@
 	}
 </style>
 
-@code {
+@code 
+{
 
+	[Parameter]
+	public int Id { get; set; }
+
+	[Parameter]
+	public string Name { get; set; }
+
+	[Parameter]
+	public string Description { get; set; }
+
+	[Parameter]
+	public Decimal? NeededMoney { get; set; }
+
+	[Parameter]
+	public Decimal? CollectedMoney { get; set; }
 }

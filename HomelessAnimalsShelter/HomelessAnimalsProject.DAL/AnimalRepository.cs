@@ -4,40 +4,37 @@ namespace HomelessAnimalsShelter.DAL
 {
 	public class AnimalRepository
 	{
-		public List<AnimalDto> GetAllAnimals()
+        public AnimalDto GetAnimalById(int id)
+        {
+            using (Context context = new Context())
+            {
+                return context.Animals.Where(a => a.Id == id).First();
+            }
+        }
+
+        public List<AnimalDto> GetAllAnimals()
+        {
+            using (Context context = new Context())
+            {
+                return context.Animals
+                              .Select(a => new AnimalDto
+                              {
+                                  Id = a.Id,
+                                  Name = a.Name,
+                                  Description = a.Description,
+                                  TagDtos = a.TagDtos,
+                                  Shelter = a.Shelter
+                              })
+                              .ToList();
+            }
+        }
+
+		public List<AnimalDto> GetAnimalsByShelterId(int shelterId)
 		{
-			var a1 = new AnimalDto()
+			using (Context context = new Context())
 			{
-				Id = 1,
-				Name = "Кот",
-				Description = "Спит"
-			};
-
-			var a2 = new AnimalDto()
-			{
-				Id = 2,
-				Name = "Собака",
-				Description = "Быстро бегает",
-			};
-
-			var a3 = new AnimalDto()
-			{
-				Id = 3,
-				Name = "Морская свинка",
-				Description = "Спит"
-			};
-
-			return new List<AnimalDto> { a1, a2, a3 };
-		}
-
-		public AnimalDto GetAnimalById(int id)
-		{
-			return new AnimalDto()
-			{
-				Id = id,
-				Name = "Глеб",
-				Description = "олег"
-			};
+				return context.Animals.Where(a => a.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
+			}
 		}
 	}
 }

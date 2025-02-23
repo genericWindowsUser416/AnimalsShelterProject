@@ -24,7 +24,8 @@ namespace HomelessAnimalsShelter.BLL
 
         public List<UserOutputModel> GetAllUsers()
         {
-            return _mapper.Map<List<UserOutputModel>>(_repository.GetAllUsers());
+            //return _mapper.Map<List<UserOutputModel>>(_repository.GetAllUsers());
+            return null;
         }
 
         public UserOutputModel GetUserById(int id)

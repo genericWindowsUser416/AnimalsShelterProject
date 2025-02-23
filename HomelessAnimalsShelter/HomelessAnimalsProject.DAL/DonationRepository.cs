@@ -4,48 +4,38 @@ namespace HomelessAnimalsShelter.DAL
 {
 	public class DonationRepository
 	{
-		public List<DonationDto> GetAllDonations()
-		{
-			var d1 = new DonationDto()
-			{
-				Id = 1,
-				Name = "QQQ",
-				Description = "WWW",
-				NeededMoney = 1000,
-				CollectedMoney = 0
-			};
-
-			var d2 = new DonationDto()
-			{
-				Id = 2,
-				Name = "WWW",
-				Description = "QQQ",
-				NeededMoney = 1500,
-				CollectedMoney = 0
-			};
-
-			var d3 = new DonationDto()
-			{
-				Id = 3,
-				Name = "DDD",
-				Description = "QQQWWW",
-				NeededMoney = 500,
-				CollectedMoney = 0
-			};
-
-			return new List<DonationDto> { d1, d2, d3 };
-		}
-
 		public DonationDto GetDonationById(int id)
 		{
-			return new DonationDto()
+			using (Context context = new Context())
 			{
-				Id = 4,
-				Name = "donate 3000",
-				Description = "DDD",
-				NeededMoney = 9999,
-				CollectedMoney = 0
-			};
+				return context.Donations.Where(r => r.Id == id).First();
+			}
 		}
-	}
+
+		public List<DonationDto> GetAllDonations()
+		{
+			using (Context context = new Context())
+			{
+				return context.Donations
+							  .Select(d => new DonationDto
+							  {
+								  Id = d.Id,
+								  Name = d.Name,
+								  Description = d.Description,
+								  Shelter = d.Shelter,
+								  NeededMoney = d.NeededMoney,
+								  CollectedMoney = d.CollectedMoney
+							  })
+							  .ToList();
+			}
+		}
+
+		public List<DonationDto> GetDonationsByShelterId(int shelterId)
+        {
+            using (Context context = new Context())
+            {
+                return context.Donations.Where(d => d.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
+            }
+        }
+    }
 }
