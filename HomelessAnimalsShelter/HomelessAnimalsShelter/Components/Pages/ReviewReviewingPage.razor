@@ -1,5 +1,14 @@
 ﻿@page "/ReviewReviewing"
 
+<nav class="toolbar">
+    <ul class="nav-list">
+        <li><a href="#" class="nav-link">Блокировка приютов</a></li>
+        <li><a href="#" class="nav-link">Окно отзывов</a></li>
+        <li><a href="#" class="nav-link">Регистрация приютов</a></li>
+        <li><button @onclick="Logout" class="logout-btn">ВЫЙТИ ИЗ СИСТЕМЫ</button></li>
+    </ul>
+</nav>
+
 <div class="reviews-container">
     <div class="cards-container">
         @for (int i = 0; i < 20; i++)
@@ -7,7 +16,6 @@
             <div class="review-card">
                 <h3>Отзыв #@(i + 1)</h3>
                 <div class="content-placeholder">
-                    
                 </div>
             </div>
         }
@@ -15,6 +23,54 @@
 </div>
 
 <style>
+    .toolbar {
+        background-color: #f5f5f5;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        background: dodgerblue;
+        color: white;
+    }
+
+        .nav-link:hover {
+            background-color: DeepSkyBlue;
+            transform: translateY(-1px);
+        }
+
+    .logout-btn {
+        margin-left: auto;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .logout-btn:hover {
+            background-color: #bb2d3b;
+            transform: translateY(-1px);
+        }
+
     .reviews-container {
         height: 100vh;
         padding: 2rem;
@@ -36,9 +92,9 @@
         transition: transform 0.2s;
     }
 
-    .review-card:hover {
+        .review-card:hover {
             transform: translateY(-2px);
-    }
+        }
 
     .content-placeholder {
         color: #666;
@@ -60,7 +116,14 @@
         border-radius: 4px;
     }
 
-    .cards-container::-webkit-scrollbar-thumb:hover {
+        .cards-container::-webkit-scrollbar-thumb:hover {
             background: #555;
-    }
+        }
 </style>
+
+@code {
+    private void Logout()
+    {
+        Console.WriteLine("Пользователь вышел из системы");
+    }
+}

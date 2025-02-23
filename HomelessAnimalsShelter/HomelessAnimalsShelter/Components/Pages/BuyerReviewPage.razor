@@ -1,9 +1,14 @@
 ﻿@page "/BuyerReviewPage"
 <PageTitle>BuyerReviewPage</PageTitle>
 
+
+<div class="header-container">
+    <h3>Напишите отзыв:</h3>
+    <a href="/shelterlist" class="home-button">НА ГЛАВНУЮ</a>
+</div>
+
 <div>
-	<h3>Напишите отзыв:</h3>
-    <textarea type="text" class="input-Field"/>
+    <textarea type="text" class="input-Field" />
     <button class="send-review-btn">Отправить отзыв</button>
 </div>
 
@@ -25,6 +30,35 @@
 </div>
 
 <style>
+
+    .home-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+    }
+
+        .home-button:hover {
+            background-color: #bb2d3b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+   
+
     .input-Field {
         width: 100%;
         height: 700px;
@@ -78,8 +112,3 @@
             }
 
 </style>
-
-
-@code {
-
-}

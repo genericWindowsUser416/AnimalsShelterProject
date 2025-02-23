@@ -2,6 +2,26 @@
 @using System.ComponentModel.DataAnnotations
 
 <style>
+
+    .home-button {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .home-button:hover {
+            background-color: #bb2d3b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
     h3 {
         font-size: 36px;
         margin-bottom: 1.5rem;
@@ -75,6 +95,13 @@
 </style>
 
 <h3>Создание заявки на сборы</h3>
+
+<div class="header-container">
+    <h3>Создание заявки на сборы</h3>
+    <a href="/shelterlist" class="home-button">НА ГЛАВНУЮ</a>
+</div>
+
+
 
 <EditForm Model="@requestModel" OnValidSubmit="HandleSubmit" class="form-container">
     <DataAnnotationsValidator />

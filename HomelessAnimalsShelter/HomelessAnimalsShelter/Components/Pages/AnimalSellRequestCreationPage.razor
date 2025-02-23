@@ -1,7 +1,64 @@
 ﻿@page "/animalSell"
 @using System.ComponentModel.DataAnnotations
 
+<nav class="toolbar">
+    <ul class="nav-list">
+        <li><a href="#" class="nav-link">Ваши пожертвования</a></li>
+        <li><a href="#" class="nav-link">Ваши передачи в добрые руки</a></li>
+        <li><a href="#" class="nav-link">Ваш приют</a></li>
+        <li><button @onclick="Logout" class="logout-btn">ВЫЙТИ ИЗ СИСТЕМЫ</button></li>
+    </ul>
+</nav>
+
 <style>
+    .toolbar {
+        background-color: #f5f5f5;
+        padding: 1rem 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: #333;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+        background: dodgerblue;
+        color: white;
+    }
+
+        .nav-link:hover {
+            background-color: DeepSkyBlue;
+            transform: translateY(-1px);
+        }
+
+    .logout-btn {
+        margin-left: auto;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+        .logout-btn:hover {
+            background-color: #bb2d3b;
+            transform: translateY(-1px);
+        }
+
     h3 {
         font-size: 36px;
         margin-bottom: 1.5rem;
@@ -172,6 +229,11 @@
     private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
     private AnimalModel animalModel = new AnimalModel();
     public string InputtedTagName;
+
+    private void Logout()
+    {
+        Console.WriteLine("Пользователь вышел из системы");
+    }
 
     private void HandleSubmit()
     {
