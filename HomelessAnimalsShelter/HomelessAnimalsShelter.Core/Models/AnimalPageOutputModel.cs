@@ -1,4 +1,6 @@
-﻿namespace HomelessAnimalsShelter.Core.Models
+﻿using HomelessAnimalsShelter.Core.Dtos;
+
+namespace HomelessAnimalsShelter.Core.Models
 {
     public class AnimalPageOutputModel
     {
@@ -8,7 +10,7 @@
 
         public string? Description { get; set; }
 
-        public List<string> TagList { get; set; } = new List<string>();
+        public List<TagDto> TagList { get; set; } = new List<TagDto>();
     }
 }
 

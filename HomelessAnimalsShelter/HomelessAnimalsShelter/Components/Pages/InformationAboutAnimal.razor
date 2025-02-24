@@ -15,6 +15,9 @@
     {
         animal = animalManager.GetAnimalById(@Id);
         Description = animal.Description;
+        
+        TagListString = string.Join(", ", animal.TagList.Select(tag => tag.Name));
+        Console.WriteLine(TagListString);
     }
 
     [Parameter]
@@ -27,7 +30,7 @@
     public string Description { get; set; }
 
     [Parameter]
-    public List<string> TagDtos { get; set; }
+    public string TagListString { get; set; }
 
 }
 
@@ -141,5 +144,5 @@
 
 </div>
 <div class="scrollable-text">
-    @Id
+    @TagListString
 </div>
