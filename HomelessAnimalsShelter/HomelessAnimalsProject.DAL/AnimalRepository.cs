@@ -1,5 +1,7 @@
 ﻿using HomelessAnimalsShelter.Core;
 using HomelessAnimalsShelter.Core.Dtos;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 namespace HomelessAnimalsShelter.DAL
 {
 	public class AnimalRepository
@@ -8,7 +10,7 @@ namespace HomelessAnimalsShelter.DAL
         {
             using (Context context = new Context())
             {
-                return context.Animals.Where(a => a.Id == id).First();
+                return context.Animals.Include(a => a.TagDtos).Where(a => a.Id == id).First();
             }
         }
 
@@ -33,7 +35,7 @@ namespace HomelessAnimalsShelter.DAL
 		{
 			using (Context context = new Context())
 			{
-				return context.Animals.Where(a => a.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
+				return context.Animals.Include(a => a.TagDtos).Include(a => a.Shelter).Where(a => a.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
 			}
 		}
 	}

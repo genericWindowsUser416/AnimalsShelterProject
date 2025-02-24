@@ -16,7 +16,7 @@
         animal = animalManager.GetAnimalById(@Id);
         Description = animal.Description;
         
-        TagListString = string.Join(", ", animal.TagList.Select(tag => tag.Name));
+        TagListString = string.Join(", ", animal.TagDtos.Select(tag => tag.Name));
         Console.WriteLine(TagListString);
     }
 

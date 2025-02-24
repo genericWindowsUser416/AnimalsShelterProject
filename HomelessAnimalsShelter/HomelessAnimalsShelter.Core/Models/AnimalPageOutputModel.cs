@@ -10,7 +10,7 @@ namespace HomelessAnimalsShelter.Core.Models
 
         public string? Description { get; set; }
 
-        public List<TagDto> TagList { get; set; } = new List<TagDto>();
+        public List<TagDto> TagDtos { get; set; } = new List<TagDto>();
     }
 }
 
