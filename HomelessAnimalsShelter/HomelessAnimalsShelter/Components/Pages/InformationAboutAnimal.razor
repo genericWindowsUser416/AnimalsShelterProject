@@ -1,19 +1,19 @@
 ﻿@page "/infoAnimal/{Id:int}"
 @rendermode InteractiveServer
 @using HomelessAnimalsShelter.UI.Components.Items
-@using HomelessAnimalsShelter.DAL
+@using HomelessAnimalsShelter.BLL
 @using HomelessAnimalsShelter.Core.Dtos
-
+@using HomelessAnimalsShelter.Core.Models
 
 @code
 {
 
-    private AnimalDto animal;
-    private AnimalRepository animalRepository = new AnimalRepository();
+    private AnimalPageOutputModel animal;
+    private AnimalManager animalManager = new AnimalManager();
 
     protected override void OnInitialized()
     {
-        animal = animalRepository.GetAnimalById(@Id);
+        animal = animalManager.GetAnimalById(@Id);
         Description = animal.Description;
     }
 
@@ -28,8 +28,6 @@
 
     [Parameter]
     public List<string> TagDtos { get; set; }
-
-
 
 }
 
