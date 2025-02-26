@@ -58,6 +58,17 @@ namespace HomelessAnimalsShelter
             //    new AnimalDto { Id = 2, Name = "Gleb", Description = "Описание будет здесь", TagDtos = new List<TagDto> { tags[3], tags[2] }, Shelter = shelters[1] }
             //};
             //context.Animals.AddRange(animals);
+
+            //var reviews = new List<ReviewDto>
+            //{
+            //    new ReviewDto { Id = 1, Description = "Отзыв 3000000",Shelter = shelters[0], Rating = 3, User = users[0] },
+            //    new ReviewDto { Id = 2, Description = "Отзыв 1000-THR",Shelter = shelters[0], Rating = 2, User = users[1] },
+            //    new ReviewDto { Id = 3, Description = "Отзыв QQQQWWWW",Shelter = shelters[1], Rating = 5, User = users[0] },
+            //    new ReviewDto { Id = 4, Description = "Это точно отзыв",Shelter = shelters[1], Rating = 4, User = users[1] }
+            //};
+            //context.Reviews.AddRange(reviews);
+
+
             //context.SaveChanges();
 
 

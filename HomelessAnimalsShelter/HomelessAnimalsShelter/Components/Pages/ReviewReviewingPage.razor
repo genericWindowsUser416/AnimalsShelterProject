@@ -1,4 +1,22 @@
-﻿@page "/ReviewReviewing"
+﻿@using HomelessAnimalsShelter.BLL
+@using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.Core.Models
+@page "/ReviewReviewing"
+@rendermode InteractiveServer
+
+@code {
+    private void Logout()
+    {
+        Console.WriteLine("Пользователь вышел из системы");
+    }
+
+    private List<ReviewOutputModel> reviews;
+    private ReviewManager reviewManager = new ReviewManager();
+    protected override void OnInitialized()
+    {
+        reviews = reviewManager.GetAllReviews();
+    }
+}
 
 <nav class="toolbar">
     <ul class="nav-list">
@@ -11,13 +29,22 @@
 
 <div class="reviews-container">
     <div class="cards-container">
-        @for (int i = 0; i < 20; i++)
+
+
+
+        @if (reviews != null && reviews.Any())
         {
-            <div class="review-card">
-                <h3>Отзыв #@(i + 1)</h3>
-                <div class="content-placeholder">
-                </div>
-            </div>
+            @foreach (var review in reviews)
+            {
+                <ReviewCard Description="@review.Description"
+                                   Id="@review.Id"
+                            Rating="@review.Rating">
+                </ReviewCard>
+            }
+        }
+        else
+        {
+            <p>No reviews?!</p>
         }
     </div>
 </div>
@@ -121,9 +148,3 @@
         }
 </style>
 
-@code {
-    private void Logout()
-    {
-        Console.WriteLine("Пользователь вышел из системы");
-    }
-}
