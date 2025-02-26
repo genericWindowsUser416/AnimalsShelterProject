@@ -1,15 +1,15 @@
-﻿@page "/ShelterList"
-@rendermode InteractiveServer
+﻿@using HomelessAnimalsShelter.BLL
 @using HomelessAnimalsShelter.UI.Components.Items
-@using HomelessAnimalsShelter.DAL
-@using HomelessAnimalsShelter.Core.Dtos
+@using HomelessAnimalsShelter.Core.Models
+@page "/ShelterList"
+@rendermode InteractiveServer
 
 @code {
-    private List<ShelterDto> shelters;
-    private ShelterRepository shelterRepository = new ShelterRepository();
+    private List<ShelterOutputModel> shelters;
+    private ShelterManager shelterManager = new ShelterManager();
     protected override void OnInitialized()
     {
-        shelters = shelterRepository.GetAllShelters();
+        shelters = shelterManager.GetAllShelters();
     }
 }
 

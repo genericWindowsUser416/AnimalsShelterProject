@@ -1,4 +1,40 @@
-﻿@page "/infoAnimal"
+﻿@page "/infoAnimal/{Id:int}"
+@rendermode InteractiveServer
+@using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.BLL
+@using HomelessAnimalsShelter.Core.Dtos
+@using HomelessAnimalsShelter.Core.Models
+
+@code
+{
+
+    private AnimalPageOutputModel animal;
+    private AnimalManager animalManager = new AnimalManager();
+
+    protected override void OnInitialized()
+    {
+        animal = animalManager.GetAnimalById(@Id);
+        Description = animal.Description;
+        Name = animal.Name;
+        
+        TagListString = string.Join(", ", animal.TagDtos.Select(tag => tag.Name));
+        Console.WriteLine(TagListString);
+    }
+
+    [Parameter]
+    public int Id { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public string Description { get; set; }
+
+    [Parameter]
+    public string TagListString { get; set; }
+
+}
+
 
 <style>
     h3 {
@@ -8,7 +44,7 @@
 
     .form-container {
         display: flex;
-        justify-content: space-between; /* Aligns columns to the left and right */
+        justify-content: space-between;
         gap: 2rem;
         align-items: flex-start;
         font-size: 1.1rem;
@@ -100,16 +136,14 @@
 
     <div class="right-column">
         <div class="form-group">
-            <label>ИМЯ ЖИВОТНОГО</label>
+            <label>@Name</label>
+            <br />
+            <label>@Description</label>
         </div>
+            
     </div>
 
 </div>
 <div class="scrollable-text">
-    ТЕГИ ЗДЕСЬ, если текст слишком длинный, то будет скролл, все теги через запятую, возьмём их из базы данных, тегов может быть очень много, поэтому скролл жизненно необходим
+    @TagListString
 </div>
-
-@code 
-{
-
-}

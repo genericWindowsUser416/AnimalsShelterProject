@@ -2,7 +2,7 @@
     <img src="ANIMAL.jpg" alt="Animal image">
     <hr/>
     <p>@Name</p>
-    <button class="review-button">Подробнее</button>
+    <a href="/infoAnimal/@Id"><button class="review-button">Подробнее</button></a>
 </div>
 <style>
     .animal-card {
@@ -57,12 +57,10 @@
 
 @code
 {
-	[Parameter]
-	public string Name { get; set; } = "-";
+    [Parameter]
+    public string Name { get; set; }
 
-	[Parameter]
-	public string Description { get; set; } = "-";
+    [Parameter]
+    public int Id { get; set; }
 
-	[Parameter]
-	public int Id { get; set; } = 0;
 }

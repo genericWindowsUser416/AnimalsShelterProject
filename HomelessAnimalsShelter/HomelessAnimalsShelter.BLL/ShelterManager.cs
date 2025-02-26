@@ -22,7 +22,7 @@ namespace HomelessAnimalsShelter.BLL
 			_repository = new ShelterRepository();
 		}
 
-		public List<ShelterOutputModel> GetAllUsers()
+		public List<ShelterOutputModel> GetAllShelters()
 		{
 			return _mapper.Map<List<ShelterOutputModel>>(_repository.GetAllShelters());
 		}
@@ -31,5 +31,10 @@ namespace HomelessAnimalsShelter.BLL
 		{
 			return _mapper.Map<ShelterOutputModel>(_repository.GetShelterById(id));
 		}
-	}
+
+        public ShelterOutputModel GetAllShelters(int id)
+        {
+            return _mapper.Map<ShelterOutputModel>(_repository.GetAllShelters);
+        }
+    }
 }

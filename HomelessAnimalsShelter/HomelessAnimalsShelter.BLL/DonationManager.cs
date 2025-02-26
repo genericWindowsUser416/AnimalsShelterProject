@@ -31,5 +31,10 @@ namespace HomelessAnimalsShelter.BLL
 		{
 			return _mapper.Map<DonationOutputModel>(_repository.GetDonationById(id));
 		}
-	}
+
+        public List<DonationOutputModel> GetDonationsByShelterId(int id)
+        {
+            return _mapper.Map<List<DonationOutputModel>>(_repository.GetDonationsByShelterId(id));
+        }
+    }
 }

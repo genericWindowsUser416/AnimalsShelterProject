@@ -1,8 +1,8 @@
 ﻿@rendermode InteractiveServer
 @using HomelessAnimalsShelter.UI.Components.Items
-@using HomelessAnimalsShelter.DAL
+@using HomelessAnimalsShelter.BLL
 @using HomelessAnimalsShelter.Core.Dtos
-
+@using HomelessAnimalsShelter.Core.Models
 <style>
 
     .animal-cards {
@@ -29,16 +29,16 @@
     [Parameter]
     public int Id { get; set; } = 0;
 
-    private List<DonationDto> donations;
-    private DonationRepository donationRepository = new DonationRepository();
+    private List<DonationOutputModel> donations;
+    private DonationManager donationManager = new DonationManager();
 
-    private List<AnimalDto> animals;
-    private AnimalRepository animalRepository = new AnimalRepository();
+    private List<AnimalCardOutputModel> animals;
+    private AnimalManager animalManager = new AnimalManager();
 
     protected override void OnInitialized()
     {
-        donations = donationRepository.GetDonationsByShelterId(@Id);
-        animals = animalRepository.GetAnimalsByShelterId(@Id);
+        donations = donationManager.GetDonationsByShelterId(@Id);
+        animals = animalManager.GetAnimalsByShelterId(@Id);
     }
 }
 
@@ -67,7 +67,9 @@
     {
         @foreach (var animal in animals)
         {
-            <AnimalCard Name="@animal.Name"
+            <AnimalCard 
+                Name = "@animal.Name"
+                Id = "@animal.Id"
             >
             </AnimalCard>
         }
