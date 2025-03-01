@@ -1,6 +1,7 @@
 using HomelessAnimalsShelter.UI.Components;
 using HomelessAnimalsShelter.DAL;
 using HomelessAnimalsShelter.Core.Dtos;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace HomelessAnimalsShelter
 {
     public class Program
@@ -71,13 +72,24 @@ namespace HomelessAnimalsShelter
 
             //context.SaveChanges();
 
-
-
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddBlazorBootstrap();
+
             // Add services to the container.
             builder.Services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(
+                    options =>
+                    {
+                        options.Cookie.Name = "auth_token";
+                        options.LoginPath = "/login";
+                        options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
+                    });
+
+            builder.Services.AddAuthorization();
+            builder.Services.AddCascadingAuthenticationState();
+            builder.Services.AddHttpContextAccessor();
 
             var app = builder.Build();
 
