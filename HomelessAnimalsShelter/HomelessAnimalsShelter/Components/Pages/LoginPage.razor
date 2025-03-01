@@ -2,21 +2,24 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
-
+@using HomelessAnimalsShelter.Core.Models
 <div class="container">
         <div class="login-form">
-            <h2>Введите ваши данные</h2>
-            <form>
-                <div class="form-group">
-                    <label for="username">Логин</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Пароль</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-            <button class="btn accept-btn">Войти</button>
-            </form>
+        <h2>Введите ваши данные</h2>
+        <EditForm Model="loginModel" OnSubmit="StartLogin" FormName="Login">
+
+        <div class="form-group">
+            <label for="username">Логин</label>
+            <InputText @bind-Value="loginModel.Login" id="username" name="username" required></InputText>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Пароль</label>
+            <InputText @bind-Value="loginModel.Password" id="password" name="password" required></InputText>
+            <button type="submit">LOGIN</button>
+        </div>
+
+        </EditForm>
         </div>
 </div>
 <style>
@@ -77,5 +80,23 @@ input:focus {
 </style>
 
 @code {
+    [CascadingParameter]
+    public HttpContext httpContext { get; set; }
 
+    [SupplyParameterFromForm]
+    public LoginModel loginModel { get; set; } = new LoginModel();
+
+    public async void StartLogin()
+    {
+        var claims = new List<Claim>()
+        {
+            new Claim("Name", loginModel.Login),
+            new Claim(ClaimTypes.Role, "Prezenent")
+        };
+
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var pr = new ClaimsPrincipal(identity);
+
+        await httpContext.SignInAsync(pr);
+    }
 }
