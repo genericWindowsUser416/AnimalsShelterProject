@@ -1,29 +1,29 @@
 ﻿<div class="window-container">
-  <div class="shelter-card">
-    <h3 class="card-header">Заявка приюта на регистрацию</h3>
+    <div class="shelter-card">
+        <h3 class="card-header">Заявка приюта на регистрацию</h3>
 
-    <div class="card-body">
-        <div class="card-field">
-            <span class="field-label">Название приюта</span>
-            <div class="field-value">@ShelterName</div>
+        <div class="card-body">
+            <div class="card-field">
+                <span class="field-label">Название приюта</span>
+                <div class="field-value">@ShelterName</div>
+            </div>
+
+            <div class="card-field">
+                <span class="field-label">Город приюта</span>
+                <div class="field-value">@City</div>
+            </div>
+
+            <div class="card-field">
+                <span class="field-label">Описание приюта</span>
+                <div class="field-value description-text">@Description</div>
+            </div>
         </div>
 
-        <div class="card-field">
-            <span class="field-label">Город приюта</span>
-            <div class="field-value">@City</div>
-        </div>
-
-        <div class="card-field">
-            <span class="field-label">Описание приюта</span>
-            <div class="field-value description-text">@Description</div>
+        <div class="card-footer">
+            <button class="btn decline-btn">Отклонить</button>
+            <button class="btn accept-btn">Принять</button>
         </div>
     </div>
-
-    <div class="card-footer">
-        <button class="btn decline-btn" @onclick="OnDecline">Отклонить</button>
-        <button class="btn accept-btn" @onclick="OnAccept">Принять</button>
-    </div>
-</div>
 </div>
 <style>
     .window-container {
@@ -108,7 +108,7 @@
     }
 
     .accept-btn {
-        background: #38a169;
+        background: dodgerblue;
         color: white;
     }
 
@@ -148,14 +148,4 @@
 
     [Parameter]
     public EventCallback OnReject { get; set; }
-
-    private async Task OnAccept()
-    {
-        await OnApprove.InvokeAsync();
-    }
-
-    private async Task OnDecline()
-    {
-        await OnReject.InvokeAsync();
-    }
 }
