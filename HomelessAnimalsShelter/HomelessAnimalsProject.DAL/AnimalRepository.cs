@@ -38,5 +38,7 @@ namespace HomelessAnimalsShelter.DAL
 				return context.Animals.Include(a => a.TagDtos).Include(a => a.Shelter).Where(a => a.Shelter == context.Shelters.Where(s => s.Id == shelterId).First()).ToList();
 			}
 		}
+
+
 	}
 }

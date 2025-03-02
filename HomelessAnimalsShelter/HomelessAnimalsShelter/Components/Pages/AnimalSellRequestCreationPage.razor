@@ -145,13 +145,13 @@
 </style>
 
 <h3>Создание заявки на продажу животного</h3>
-<EditForm Model="@animalModel" OnValidSubmit="HandleSubmit" class="form-container">
+<EditForm Model="@animalModel" OnValidSubmit="HandleSubmit" FormName="animanSubmitForm" class="form-container">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="left-column">
         <div class="form-group">
             <label>Имя животного:</label>
-            <InputText @bind-Value="animalModel.Title"
+            <InputText @bind-Value="animalModel.Name"
                        placeholder="Введите имя"
                        class="form-control" />
             <br />
@@ -237,7 +237,7 @@
 
     private void HandleSubmit()
     {
-        Console.WriteLine($"Заявка создана: {animalModel.Title}, {animalModel.Description}");
+        Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
         foreach (var tag in TagList)
         {
             if (tag.Value)
@@ -250,7 +250,7 @@
     public class AnimalModel
     {
         [Required(ErrorMessage = "Поле обязательно!")]
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Укажите сумму!")]
         [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
