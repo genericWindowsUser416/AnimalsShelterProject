@@ -1,5 +1,76 @@
-﻿@page "/animalSell"
+﻿@using HomelessAnimalsShelter.BLL
+@using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.Core.Models
 @using System.ComponentModel.DataAnnotations
+@page "/animalSell"
+@rendermode InteractiveServer
+
+@code {
+    private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
+    private AnimalModel animalModel = new AnimalModel();
+    public string InputtedTagName;
+
+    private void Logout()
+    {
+        Console.WriteLine("Пользователь вышел из системы");
+    }
+
+    private void HandleSubmit()
+    {
+        Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
+        foreach (var tag in TagList)
+        {
+            if (tag.Value)
+            {
+                Console.WriteLine($"Selected Tag: {tag.Key}");
+            }
+        }
+    }
+
+    public class AnimalModel
+    {
+        [Required(ErrorMessage = "Поле обязательно!")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Укажите сумму!")]
+        [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
+        public decimal? Amount { get; set; }
+
+        [Required(ErrorMessage = "Добавьте описание!")]
+        public string Description { get; set; }
+    }
+
+    private List<TagOutputModel> tags;
+    private TagManager tagManager = new TagManager();
+
+    protected override void OnInitialized()
+    {
+        tags = tagManager.GetAllTags();
+        foreach (var tag in tags)
+        {
+            Console.WriteLine($"TAG ID " + tag.Id );
+            Console.WriteLine($"TAG NAME " + tag.Name );
+            TagList.Add(tag.Name, false);
+            Console.WriteLine(" ");
+            // foreach (var animal in tag.AnimalList)
+            // {
+            //     Console.WriteLine($"Animal " + animal);
+            // }
+
+        }
+        // TagList.Add("Белое", false);
+        // TagList.Add("Собака", false);
+        // TagList.Add("Маленькое", false);
+        // TagList.Add("Кот", false);
+        // TagList.Add("Быстрое", false);
+        // TagList.Add("Медленное", false);
+        // TagList.Add("Большое", false);
+        // TagList.Add("Прожорливое", false);
+        // TagList.Add("Чёрное", false);
+        // TagList.Add("Кошка", false);
+    }
+
+}
 
 <nav class="toolbar">
     <ul class="nav-list">
@@ -170,25 +241,7 @@
                 }
             </div>
 
-        <script>
-            function filterTags() {
-                const inputField = document.getElementById('inputField');
-                const filter = inputField.value.toLowerCase();
-                const tagList = document.getElementById('tagListElement');
-                const tags = tagList.getElementsByClassName('tag-item');
 
-                Array.from(tags).forEach(tag => {
-                    const tagText = tag.innerText.toLowerCase();
-                    if (tagText.includes(filter)) {
-                        tag.style.display = 'block'; // Show the tag
-                    } else {
-                        tag.style.display = 'none'; // Hide the tag
-                    }
-                });
-            }
-
-            document.getElementById('inputField').addEventListener('input', filterTags);
-        </script>
 
         </div>
     </div>
@@ -222,57 +275,26 @@
     <button type="submit" class="create-button">
         СОЗДАТЬ
     </button>
+    <script>
+        function filterTags() {
+            const inputField = document.getElementById('inputField');
+            const filter = inputField.value.toLowerCase();
+            const tagList = document.getElementById('tagListElement');
+            const tags = tagList.getElementsByClassName('tag-item');
+
+            Array.from(tags).forEach(tag => {
+                const tagText = tag.innerText.toLowerCase();
+                if (tagText.includes(filter)) {
+                    tag.style.display = 'block'; // Show the tag
+                } else {
+                    tag.style.display = 'none'; // Hide the tag
+                    console.log("A tag was hidden!");
+                }
+            });
+        }
+
+        document.getElementById('inputField').addEventListener('input', filterTags);
+    </script>
 
 </EditForm>
 
-@code {
-    private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
-    private AnimalModel animalModel = new AnimalModel();
-    public string InputtedTagName;
-
-    private void Logout()
-    {
-        Console.WriteLine("Пользователь вышел из системы");
-    }
-
-    private void HandleSubmit()
-    {
-        Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
-        foreach (var tag in TagList)
-        {
-            if (tag.Value)
-            {
-                Console.WriteLine($"Selected Tag: {tag.Key}");
-            }
-        }
-    }
-
-    public class AnimalModel
-    {
-        [Required(ErrorMessage = "Поле обязательно!")]
-        public string Name { get; set; }
-
-        [Required(ErrorMessage = "Укажите сумму!")]
-        [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
-        public decimal? Amount { get; set; }
-
-        [Required(ErrorMessage = "Добавьте описание!")]
-        public string Description { get; set; }
-    }
-
-    protected override void OnInitialized()
-    {
-        TagList.Add("Белое", false);
-        TagList.Add("Собака", false);
-        TagList.Add("Маленькое", false);
-        TagList.Add("Кот", false);
-        TagList.Add("Быстрое", false);
-        TagList.Add("Медленное", false);
-        TagList.Add("Большое", false);
-        TagList.Add("Прожорливое", false);
-        TagList.Add("Чёрное", false);
-        TagList.Add("Кошка", false);
-    }
-
-
-}
