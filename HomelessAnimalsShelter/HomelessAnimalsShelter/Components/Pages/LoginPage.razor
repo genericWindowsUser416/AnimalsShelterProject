@@ -3,26 +3,27 @@
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
 @using HomelessAnimalsShelter.Core.Models
-<div class="container">
+
+@* <div class="container">
         <div class="login-form">
-        <h2>Введите ваши данные</h2>
+        <h2>Введите ваши данные</h2> *@
         <EditForm Model="loginModel" OnSubmit="StartLogin" FormName="Login">
 
-        <div class="form-group">
-            <label for="username">Логин</label>
-            <InputText @bind-Value="loginModel.Login" id="username" name="username" required></InputText>
-        </div>
+            @* <div class="form-group"> *@
+                @* <label for="username">Логин</label> *@
+                <InputText @bind-Value="loginModel.Login"/>
+            @* </div> *@
 
-        <div class="form-group">
-            <label for="username">Пароль</label>
-            <InputText @bind-Value="loginModel.Password" id="password" name="password" required></InputText>
-            <button type="submit">LOGIN</button>
-        </div>
+            @* <div class="form-group"> *@
+                @* <label for="username">Пароль</label> *@
+                <InputText @bind-Value="loginModel.Password"/>
+                <button type="submit">LOGIN</button>
+            @* </div> *@
 
         </EditForm>
-        </div>
-</div>
-<style>
+@*         </div>
+</div> *@
+@* <style>
 
 .accept-btn {
         width: 100%;
@@ -77,20 +78,22 @@ input:focus {
     border-color: #0056b3;
     outline: none;
 }
-</style>
+</style> *@
 
 @code {
     [CascadingParameter]
     public HttpContext httpContext { get; set; }
 
-    [SupplyParameterFromForm]
-    public LoginModel loginModel { get; set; } = new LoginModel();
+    private LoginModel loginModel = new LoginModel();
 
     public async void StartLogin()
     {
+        //Идем в базу проверяться и тд
+        Console.WriteLine($"попытка {loginModel.Login}");
+        Console.WriteLine($"попыткаа {loginModel.Password}");
         var claims = new List<Claim>()
         {
-            new Claim("Name", loginModel.Login),
+            new Claim("Name", loginModel.Login!),
             new Claim(ClaimTypes.Role, "Prezenent")
         };
 
