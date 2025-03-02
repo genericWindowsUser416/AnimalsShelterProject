@@ -1,4 +1,4 @@
-﻿@page "/ShelterPageBuyer"
+﻿@page "/ShelterPageSeller"
 
 <div class="shelter-container">
     <div class="header">
@@ -13,7 +13,9 @@
         <p>Лучший приют Омска</p>
     </div>
 
-    <button class="review-button">Оставить отзыв</button>
+    <a class="review-button" href="/animalsell">Добавить животное</a>
+
+    <a class="donation-button" href="/CreateDonation">Начать сбор средств</a>
 
     <div class="section">
         <h4>Наши животные</h4>
@@ -116,6 +118,25 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
      }
+
+    .donation-button {
+        background: dodgerblue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+    }
+
+        .donation-button:hover {
+            background: dodgerblue;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 
     .section {
         margin: 25px 0;
