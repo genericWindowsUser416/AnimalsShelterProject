@@ -32,10 +32,6 @@
         [Required(ErrorMessage = "Поле обязательно!")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Укажите сумму!")]
-        [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
-        public decimal? Amount { get; set; }
-
         [Required(ErrorMessage = "Добавьте описание!")]
         public string Description { get; set; }
     }
