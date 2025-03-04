@@ -1,5 +1,6 @@
 ﻿using HomelessAnimalsShelter.Core;
 using HomelessAnimalsShelter.Core.Dtos;
+using HomelessAnimalsShelter.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 namespace HomelessAnimalsShelter.DAL
@@ -39,6 +40,10 @@ namespace HomelessAnimalsShelter.DAL
 			}
 		}
 
+        public AnimalPageOutputModel SendAnimalToBase(AnimalPageOutputModel animalPageOutputModel)
+        {
+            return null;
+        }
 
 	}
 }

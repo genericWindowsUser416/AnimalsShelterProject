@@ -7,6 +7,7 @@
 
 @code {
     private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
+    private AnimalManager animalManager = new AnimalManager();
     private AnimalModel animalModel = new AnimalModel();
     public string InputtedTagName;
 
@@ -17,6 +18,23 @@
 
     private void HandleSubmit()
     {
+        var trueValues = new List<string>();
+        foreach (var key in TagList.Keys)
+        {
+            if (TagList[key])
+            {
+                Console.WriteLine($"Key: {key}, Value: {TagList[key]}");
+                trueValues.Add(key);
+            }
+        }
+        animalManager.SendAnimalToBase(new AnimalInputModel
+        {
+                Name = animalModel.Name,
+                Description = animalModel.Description,
+                Id = 3,
+                TagDtos = trueValues
+        }
+        );
         Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
         foreach (var tag in TagList)
         {
