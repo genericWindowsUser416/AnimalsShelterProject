@@ -3,6 +3,7 @@ using HomelessAnimalsShelter.Core.Models;
 using HomelessAnimalsShelter.BLL.Mappers;
 using HomelessAnimalsShelter.DAL;
 using System.Runtime.CompilerServices;
+using HomelessAnimalsShelter.Core.Dtos;
 
 namespace HomelessAnimalsShelter.BLL
 {
@@ -40,9 +41,8 @@ namespace HomelessAnimalsShelter.BLL
 
 		public AnimalInputModel SendAnimalToBase(AnimalInputModel animalInputModel) 
         {
-            var animalOutputModel = _mapper.Map<AnimalPageOutputModel>(animalInputModel);
-            _repository.SendAnimalToBase(animalOutputModel);
-
+            var animalDto = _mapper.Map<AnimalDto>(animalInputModel);
+            _repository.SendAnimalToBase(animalDto);
             return null;
         }
     }

@@ -3,6 +3,7 @@
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Authentication.Cookies
 @using HomelessAnimalsShelter.Core.Models
+@using HomelessAnimalsShelter.BLL
 
 <div class="container">
         <div class="login-form">
@@ -86,10 +87,13 @@ input:focus {
 
     [SupplyParameterFromForm]
     public LoginModel loginModel { get; set; } = new LoginModel();
-
+    private UserManager userManager = new UserManager();
     public async void StartLogin()
     {
         //Идем в базу проверяться и тд
+
+        Console.WriteLine($"{ userManager.GetUserTypeByLogin(loginModel.Login).ToString() }");
+
         Console.WriteLine($"попытка {loginModel.Login}");
         Console.WriteLine($"попыткаа {loginModel.Password}");
         var claims = new List<Claim>()

@@ -40,8 +40,9 @@ namespace HomelessAnimalsShelter.DAL
 			}
 		}
 
-        public AnimalPageOutputModel SendAnimalToBase(AnimalPageOutputModel animalPageOutputModel)
+        public AnimalPageOutputModel SendAnimalToBase(AnimalDto animalDto)
         {
+            Console.WriteLine($"Id = {animalDto.Id} \n Name = {animalDto.Name} \n Description = {animalDto.Description} \n Shelter = {animalDto.Shelter} \n TagDtos = {animalDto.TagDtos}");
             return null;
         }
 

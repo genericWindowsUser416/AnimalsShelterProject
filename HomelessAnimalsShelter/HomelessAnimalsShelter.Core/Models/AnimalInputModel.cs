@@ -11,5 +11,7 @@ namespace HomelessAnimalsShelter.Core.Models
         public string Description { get; set; }
 
         public List<string> TagDtos { get; set; } = new List<string>();
+
+        public ShelterDto? Shelter { get; set; }
     }
 }

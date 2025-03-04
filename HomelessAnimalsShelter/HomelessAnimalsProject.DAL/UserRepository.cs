@@ -1,4 +1,5 @@
-﻿using HomelessAnimalsShelter.Core.Dtos;
+﻿using HomelessAnimalsShelter.Core;
+using HomelessAnimalsShelter.Core.Dtos;
 
 namespace HomelessAnimalsShelter.DAL
 {
@@ -27,5 +28,25 @@ namespace HomelessAnimalsShelter.DAL
 							  .ToList();
 			}
 		}
-	}
+
+        public UserType GetUserTypeByLogin(string login)
+        {
+            {
+                using (Context context = new Context())
+                {
+                    //return context.Users.Where(u => u.Login == login).FirstOrDefault();
+
+                    var user = context.Users.Where(u => u.Login == login).FirstOrDefault();
+                    if (user != null)
+                    {
+                        return (UserType)user.UserType;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException(nameof(user), "User is null!");
+                    }
+                }
+            }
+        }
+    }
 }

@@ -9,8 +9,10 @@
     private Dictionary<string, bool> TagList = new Dictionary<string, bool>();
     private AnimalManager animalManager = new AnimalManager();
     private AnimalModel animalModel = new AnimalModel();
+    private ShelterManager shelterManager = new ShelterManager();
     public string InputtedTagName;
-
+    private ShelterOutputModel shelter;
+    
     private void Logout()
     {
         Console.WriteLine("Пользователь вышел из системы");
@@ -18,6 +20,7 @@
 
     private void HandleSubmit()
     {
+
         var trueValues = new List<string>();
         foreach (var key in TagList.Keys)
         {
@@ -27,22 +30,26 @@
                 trueValues.Add(key);
             }
         }
-        animalManager.SendAnimalToBase(new AnimalInputModel
-        {
-                Name = animalModel.Name,
-                Description = animalModel.Description,
-                Id = 3,
-                TagDtos = trueValues
-        }
-        );
-        Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
-        foreach (var tag in TagList)
-        {
-            if (tag.Value)
-            {
-                Console.WriteLine($"Selected Tag: {tag.Key}");
-            }
-        }
+
+        
+        // shelter = shelterManager.GetShelterById(1);
+        // animalManager.SendAnimalToBase(new AnimalInputModel
+        // {
+        //         Name = animalModel.Name,
+        //         Description = animalModel.Description,
+        //         Id = 3,
+        //         TagDtos = trueValues,
+        //         // Shelter = shelter 
+        // }
+        // );
+        // Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
+        // foreach (var tag in TagList)
+        // {
+        //     if (tag.Value)
+        //     {
+        //         Console.WriteLine($"Selected Tag: {tag.Key}");
+        //     }
+        // }
     }
 
     public class AnimalModel

@@ -2,6 +2,7 @@
 using HomelessAnimalsShelter.Core.Models;
 using HomelessAnimalsShelter.BLL.Mappers;
 using HomelessAnimalsShelter.DAL;
+using HomelessAnimalsShelter.Core;
 
 namespace HomelessAnimalsShelter.BLL
 {
@@ -32,5 +33,11 @@ namespace HomelessAnimalsShelter.BLL
         {
             return _mapper.Map<UserOutputModel>(_repository.GetUserById(id));
         }
+
+        public UserType GetUserTypeByLogin(string login)
+        {
+            return _mapper.Map<UserType>(_repository.GetUserTypeByLogin(login));
+        }
+        
     }
 }
