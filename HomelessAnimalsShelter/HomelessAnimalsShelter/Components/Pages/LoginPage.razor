@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Authentication.Cookies
 @using HomelessAnimalsShelter.Core.Models
 @using HomelessAnimalsShelter.BLL
-
+@using HomelessAnimalsShelter.Core
 <div class="container">
         <div class="login-form">
         <h2>Введите ваши данные</h2>
@@ -91,16 +91,43 @@ input:focus {
     public async void StartLogin()
     {
         //Идем в базу проверяться и тд
-
-        Console.WriteLine($"{ userManager.GetUserTypeByLogin(loginModel.Login).ToString() }");
-
-        Console.WriteLine($"попытка {loginModel.Login}");
-        Console.WriteLine($"попыткаа {loginModel.Password}");
-        var claims = new List<Claim>()
+        UserType thisUserType = userManager.GetUserTypeByLogin(loginModel.Login);
+        var claims = new List<Claim>(){};
+        switch (thisUserType)
         {
-            new Claim("Name", loginModel.Login!),
-            new Claim(ClaimTypes.Role, "Prezenent")
-        };
+            case UserType.Seller:
+                Console.WriteLine("вы продавец");
+                claims = new List<Claim>()
+                {
+                    new Claim("Name", loginModel.Login!),
+                    new Claim(ClaimTypes.Role, "Seller")
+                };
+                break;
+
+            case UserType.Admin:
+                Console.WriteLine("вы администратор");
+                claims = new List<Claim>()
+                {
+                    new Claim("Name", loginModel.Login!),
+                    new Claim(ClaimTypes.Role, "Admin")
+                };
+
+                break;
+
+            case UserType.Buyer:
+                Console.WriteLine("вы покупатель");
+                claims = new List<Claim>()
+                {
+                    new Claim("Name", loginModel.Login!),
+                    new Claim(ClaimTypes.Role, "Buyer")
+                };
+                break;
+
+            default:
+                break;
+        }
+
+
 
         var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         var pr = new ClaimsPrincipal(identity);

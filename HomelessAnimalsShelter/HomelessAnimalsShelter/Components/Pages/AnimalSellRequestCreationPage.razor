@@ -2,6 +2,11 @@
 @using HomelessAnimalsShelter.UI.Components.Items
 @using HomelessAnimalsShelter.Core.Models
 @using System.ComponentModel.DataAnnotations
+
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+
+
 @page "/animalSell"
 @rendermode InteractiveServer
 
@@ -101,6 +106,98 @@
         <li><button @onclick="Logout" class="logout-btn">ВЫЙТИ ИЗ СИСТЕМЫ</button></li>
     </ul>
 </nav>
+
+<AuthorizeView Roles="Seller" Context="coolContextName">
+    <Authorized>
+
+<h3>Создание заявки на продажу животного</h3>
+<EditForm Model="@animalModel" OnValidSubmit="HandleSubmit" FormName="animanSubmitForm" class="form-container">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="left-column">
+        <div class="form-group">
+            <label>Имя животного:</label>
+            <InputText @bind-Value="animalModel.Name"
+                       placeholder="Введите имя"
+                       class="form-control" />
+            <br />
+        </div>
+
+        <div class="form-group">
+            <label>Выберите теги:</label>
+            <InputText @bind-Value="InputtedTagName" placeholder="Введите название тега" class="form-control" id="inputField" />
+
+            <div class="tag-list-container" id="tagListElement">
+                @foreach (var item in TagList.Keys.ToList())
+                {
+                    <label class="tag-item">
+                        <input type="checkbox" @bind="TagList[item]" /> @item
+                    </label>
+                }
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="right-column">
+        <div class="form-group">
+            <label>Описание животного:</label>
+            <InputTextArea @bind-Value="animalModel.Description"
+                           placeholder="Опишите животное"
+                           class="form-control"
+                           rows="8" />
+        </div>
+        <label for="avatar">Загрузите картинку:</label>
+
+        <input type="file" accept="image/png, image/jpeg" onchange="loadFile(event)">
+        <img id="output" class="output-image" />
+        <script>
+            var loadFile = function (event) 
+            {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function () 
+                {
+                    URL.revokeObjectURL(output.src) // free memory
+                }
+            };
+        </script>
+
+
+    </div>
+    <button type="submit" class="create-button">
+        СОЗДАТЬ
+    </button>
+    <script>
+        function filterTags() {
+            const inputField = document.getElementById('inputField');
+            const filter = inputField.value.toLowerCase();
+            const tagList = document.getElementById('tagListElement');
+            const tags = tagList.getElementsByClassName('tag-item');
+
+            Array.from(tags).forEach(tag => {
+                const tagText = tag.innerText.toLowerCase();
+                if (tagText.includes(filter)) {
+                    tag.style.display = 'block'; // Show the tag
+                } else {
+                    tag.style.display = 'none'; // Hide the tag
+                    console.log("A tag was hidden!");
+                }
+            });
+        }
+
+        document.getElementById('inputField').addEventListener('input', filterTags);
+    </script>
+
+</EditForm>
+
+    </Authorized>
+    <NotAuthorized>
+        <p>Вы должны быть авторизованы как продавец для просмотра этой страницы</p>
+    </NotAuthorized>
+</AuthorizeView>
 
 <style>
     .toolbar {
@@ -235,87 +332,3 @@
         }
     }
 </style>
-
-<h3>Создание заявки на продажу животного</h3>
-<EditForm Model="@animalModel" OnValidSubmit="HandleSubmit" FormName="animanSubmitForm" class="form-container">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div class="left-column">
-        <div class="form-group">
-            <label>Имя животного:</label>
-            <InputText @bind-Value="animalModel.Name"
-                       placeholder="Введите имя"
-                       class="form-control" />
-            <br />
-        </div>
-
-        <div class="form-group">
-            <label>Выберите теги:</label>
-            <InputText @bind-Value="InputtedTagName" placeholder="Введите название тега" class="form-control" id="inputField" />
-
-            <div class="tag-list-container" id="tagListElement">
-                @foreach (var item in TagList.Keys.ToList())
-                {
-                    <label class="tag-item">
-                        <input type="checkbox" @bind="TagList[item]" /> @item
-                    </label>
-                }
-            </div>
-
-
-
-        </div>
-    </div>
-
-    <div class="right-column">
-        <div class="form-group">
-            <label>Описание животного:</label>
-            <InputTextArea @bind-Value="animalModel.Description"
-                           placeholder="Опишите животное"
-                           class="form-control"
-                           rows="8" />
-        </div>
-        <label for="avatar">Загрузите картинку:</label>
-
-        <input type="file" accept="image/png, image/jpeg" onchange="loadFile(event)">
-        <img id="output" class="output-image" />
-        <script>
-            var loadFile = function (event) 
-            {
-                var output = document.getElementById('output');
-                output.src = URL.createObjectURL(event.target.files[0]);
-                output.onload = function () 
-                {
-                    URL.revokeObjectURL(output.src) // free memory
-                }
-            };
-        </script>
-
-
-    </div>
-    <button type="submit" class="create-button">
-        СОЗДАТЬ
-    </button>
-    <script>
-        function filterTags() {
-            const inputField = document.getElementById('inputField');
-            const filter = inputField.value.toLowerCase();
-            const tagList = document.getElementById('tagListElement');
-            const tags = tagList.getElementsByClassName('tag-item');
-
-            Array.from(tags).forEach(tag => {
-                const tagText = tag.innerText.toLowerCase();
-                if (tagText.includes(filter)) {
-                    tag.style.display = 'block'; // Show the tag
-                } else {
-                    tag.style.display = 'none'; // Hide the tag
-                    console.log("A tag was hidden!");
-                }
-            });
-        }
-
-        document.getElementById('inputField').addEventListener('input', filterTags);
-    </script>
-
-</EditForm>
-
