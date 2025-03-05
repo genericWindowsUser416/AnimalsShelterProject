@@ -2,11 +2,8 @@
 @using HomelessAnimalsShelter.UI.Components.Items
 @using HomelessAnimalsShelter.Core.Models
 @using System.ComponentModel.DataAnnotations
-
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Security.Claims
-
-
 @page "/animalSell"
 @rendermode InteractiveServer
 
@@ -25,7 +22,6 @@
 
     private void HandleSubmit()
     {
-
         var trueValues = new List<string>();
         foreach (var key in TagList.Keys)
         {
@@ -35,26 +31,6 @@
                 trueValues.Add(key);
             }
         }
-
-        
-        // shelter = shelterManager.GetShelterById(1);
-        // animalManager.SendAnimalToBase(new AnimalInputModel
-        // {
-        //         Name = animalModel.Name,
-        //         Description = animalModel.Description,
-        //         Id = 3,
-        //         TagDtos = trueValues,
-        //         // Shelter = shelter 
-        // }
-        // );
-        // Console.WriteLine($"Заявка создана: {animalModel.Name}, {animalModel.Description}");
-        // foreach (var tag in TagList)
-        // {
-        //     if (tag.Value)
-        //     {
-        //         Console.WriteLine($"Selected Tag: {tag.Key}");
-        //     }
-        // }
     }
 
     public class AnimalModel
@@ -78,22 +54,7 @@
             Console.WriteLine($"TAG NAME " + tag.Name );
             TagList.Add(tag.Name, false);
             Console.WriteLine(" ");
-            // foreach (var animal in tag.AnimalList)
-            // {
-            //     Console.WriteLine($"Animal " + animal);
-            // }
-
         }
-        // TagList.Add("Белое", false);
-        // TagList.Add("Собака", false);
-        // TagList.Add("Маленькое", false);
-        // TagList.Add("Кот", false);
-        // TagList.Add("Быстрое", false);
-        // TagList.Add("Медленное", false);
-        // TagList.Add("Большое", false);
-        // TagList.Add("Прожорливое", false);
-        // TagList.Add("Чёрное", false);
-        // TagList.Add("Кошка", false);
     }
 
 }
@@ -135,9 +96,6 @@
                     </label>
                 }
             </div>
-
-
-
         </div>
     </div>
 
@@ -164,8 +122,6 @@
                 }
             };
         </script>
-
-
     </div>
     <button type="submit" class="create-button">
         СОЗДАТЬ
@@ -187,12 +143,10 @@
                 }
             });
         }
-
         document.getElementById('inputField').addEventListener('input', filterTags);
     </script>
 
 </EditForm>
-
     </Authorized>
     <NotAuthorized>
         <p>Вы должны быть авторизованы как продавец для просмотра этой страницы</p>

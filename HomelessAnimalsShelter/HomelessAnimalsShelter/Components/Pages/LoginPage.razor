@@ -91,7 +91,7 @@ input:focus {
     public async void StartLogin()
     {
         //Идем в базу проверяться и тд
-        UserType thisUserType = userManager.GetUserTypeByLogin(loginModel.Login);
+        UserType thisUserType = userManager.GetUserTypeByLoginAndPassword(loginModel.Login, loginModel.Password);
         var claims = new List<Claim>(){};
         switch (thisUserType)
         {
@@ -110,6 +110,7 @@ input:focus {
                 {
                     new Claim("Name", loginModel.Login!),
                     new Claim(ClaimTypes.Role, "Admin")
+                    //new Claim(ClaimTypes.NameIdentifier, "Admin")
                 };
 
                 break;

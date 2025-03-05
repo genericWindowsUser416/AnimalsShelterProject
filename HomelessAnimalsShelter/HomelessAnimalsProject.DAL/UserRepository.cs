@@ -29,14 +29,14 @@ namespace HomelessAnimalsShelter.DAL
 			}
 		}
 
-        public UserType GetUserTypeByLogin(string login)
+        public UserType GetUserTypeByLoginAndPassword(string login, string password)
         {
             {
                 using (Context context = new Context())
                 {
                     //return context.Users.Where(u => u.Login == login).FirstOrDefault();
 
-                    var user = context.Users.Where(u => u.Login == login).FirstOrDefault();
+                    var user = context.Users.Where(u => u.Login == login).Where(u => u.Password == password).FirstOrDefault();
                     if (user != null)
                     {
                         return (UserType)user.UserType;

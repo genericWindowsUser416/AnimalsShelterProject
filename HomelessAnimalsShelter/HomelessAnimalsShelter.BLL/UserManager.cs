@@ -34,9 +34,9 @@ namespace HomelessAnimalsShelter.BLL
             return _mapper.Map<UserOutputModel>(_repository.GetUserById(id));
         }
 
-        public UserType GetUserTypeByLogin(string login)
+        public UserType GetUserTypeByLoginAndPassword(string login, string password)
         {
-            return _mapper.Map<UserType>(_repository.GetUserTypeByLogin(login));
+            return _mapper.Map<UserType>(_repository.GetUserTypeByLoginAndPassword(login, password));
         }
         
     }

@@ -1,5 +1,11 @@
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Security.Claims
+@rendermode InteractiveServer
 @page "/ShelterCreationPage"
 
+
+<AuthorizeView Roles="Seller" Context="coolContextName">
+    <Authorized>
 <nav class="toolbar">
     <ul class="nav-list">
         <li><a href="#" class="nav-link">Ваши пожертвования</a></li>
@@ -31,6 +37,33 @@
         </button>
     </form>
 </div>
+
+
+
+@code {
+    private Shelter shelter = new Shelter();
+
+    private void HandleSubmit()
+    {
+    }
+
+    private void Logout()
+    {
+        Console.WriteLine("Пользователь вышел из системы");
+    }
+
+    public class Shelter
+    {
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+    }
+}
+    </Authorized>
+    <NotAuthorized>
+        <p>Вы должны быть авторизованы как продавец для просмотра этой страницы</p>
+    </NotAuthorized>
+</AuthorizeView>
 
 <style>
     .toolbar {
@@ -137,23 +170,3 @@
         opacity: 0;
     }
 </style>
-
-@code {
-    private Shelter shelter = new Shelter();
-
-    private void HandleSubmit()
-    {
-    }
-
-    private void Logout()
-    {
-        Console.WriteLine("Пользователь вышел из системы");
-    }
-
-    public class Shelter
-    {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Description { get; set; }
-    }
-}
