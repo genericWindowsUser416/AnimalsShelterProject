@@ -38,6 +38,11 @@ namespace HomelessAnimalsShelter.BLL
         {
             return _mapper.Map<UserType>(_repository.GetUserTypeByLoginAndPassword(login, password));
         }
+
+        public UserOutputModel GetUserByLoginAndPassword(string login, string password)
+        {
+            return _mapper.Map<UserOutputModel>(_repository.GetUserByLoginAndPassword(login, password));
+        }
         
     }
 }

@@ -2,6 +2,9 @@
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Security.Claims
+@using HomelessAnimalsShelter.BLL
+@using HomelessAnimalsShelter.UI.Components.Items
+@using HomelessAnimalsShelter.Core.Models
 
 <AuthorizeView Roles="Seller" Context="coolContextName">
     <Authorized>
@@ -61,14 +64,14 @@
 
     public class RequestModel
     {
-        [Required(ErrorMessage = "Поле обязательно!")]
+        [Required(ErrorMessage = "Имя обязательно!")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Укажите сумму!")]
         [Range(1, 1000000000, ErrorMessage = "Сумма должна быть больше 0.")]
         public decimal? Amount { get; set; }
 
-        [Required(ErrorMessage = "Добавьте описание!")]
+        [Required(ErrorMessage = "Описание обязательно!")]
         public string Description { get; set; }
     }
 }

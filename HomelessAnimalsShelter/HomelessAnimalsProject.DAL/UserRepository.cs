@@ -48,5 +48,23 @@ namespace HomelessAnimalsShelter.DAL
                 }
             }
         }
+
+        public UserDto GetUserByLoginAndPassword(string login, string password)
+        {
+            {
+                using (Context context = new Context())
+                {
+                    var user = context.Users.Where(u => u.Login == login).Where(u => u.Password == password).FirstOrDefault();
+                    if (user != null)
+                    {
+                        return user;
+                    }
+                    else
+                    {
+                        throw new ArgumentNullException(nameof(user), "User is null!");
+                    }
+                }
+            }
+        }
     }
 }

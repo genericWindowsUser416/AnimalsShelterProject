@@ -47,18 +47,27 @@
 
     protected override void OnInitialized()
     {
-        tags = tagManager.GetAllTags();
-        foreach (var tag in tags)
-        {
-            Console.WriteLine($"TAG ID " + tag.Id );
-            Console.WriteLine($"TAG NAME " + tag.Name );
-            TagList.Add(tag.Name, false);
-            Console.WriteLine(" ");
-        }
+        // tags = tagManager.GetAllTags();
+        // foreach (var tag in tags)
+        // {
+        //     Console.WriteLine($"TAG ID " + tag.Id );
+        //     Console.WriteLine($"TAG NAME " + tag.Name );
+        //     TagList.Add(tag.Name, false);
+        //     Console.WriteLine(" ");
+        // }
+        // Console.WriteLine(ClaimTypes.NameIdentifier);
+        // Console.WriteLine(ClaimTypes.NameIdentifier);
+        // Console.WriteLine(ClaimTypes.NameIdentifier);
+        // Console.WriteLine(ClaimTypes.NameIdentifier);
+        // Console.WriteLine(ClaimTypes.NameIdentifier);
+        // Console.WriteLine(ClaimTypes.NameIdentifier); //что
+        //var thisUser = userManager.GetUserByLoginAndPassword(loginModel.Login, loginModel.Password);
+        
     }
 
 }
-
+<AuthorizeView Roles="Seller" Context="coolContextName">
+    <Authorized>
 <nav class="toolbar">
     <ul class="nav-list">
         <li><a href="#" class="nav-link">Ваши пожертвования</a></li>
@@ -68,8 +77,7 @@
     </ul>
 </nav>
 
-<AuthorizeView Roles="Seller" Context="coolContextName">
-    <Authorized>
+
 
 <h3>Создание заявки на продажу животного</h3>
 <EditForm Model="@animalModel" OnValidSubmit="HandleSubmit" FormName="animanSubmitForm" class="form-container">

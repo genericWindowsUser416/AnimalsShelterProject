@@ -24,62 +24,6 @@
         </EditForm>
          </div>
 </div>
- <style>
-
-.accept-btn {
-        width: 100%;
-        padding: 14px;
-        background-color: dodgerblue;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.2s;
-}
-
-.accept-btn:hover {
-    background-color: dodgerblue;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.login-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
-    width: 40%;
-}
-
-h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-input {
-    background-color: aliceblue;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 4px;
-    transition: border-color 0.3s;
-}
-
-input:focus {
-    border-color: #0056b3;
-    outline: none;
-}
-</style>
 
 @code {
     [CascadingParameter]
@@ -91,16 +35,17 @@ input:focus {
     public async void StartLogin()
     {
         //Идем в базу проверяться и тд
-        UserType thisUserType = userManager.GetUserTypeByLoginAndPassword(loginModel.Login, loginModel.Password);
+        var thisUser = userManager.GetUserByLoginAndPassword(loginModel.Login, loginModel.Password);
         var claims = new List<Claim>(){};
-        switch (thisUserType)
+        switch ((UserType)thisUser.UserRole)
         {
             case UserType.Seller:
                 Console.WriteLine("вы продавец");
                 claims = new List<Claim>()
                 {
                     new Claim("Name", loginModel.Login!),
-                    new Claim(ClaimTypes.Role, "Seller")
+                    new Claim(ClaimTypes.Role, "Seller"),
+                    new Claim(ClaimTypes.NameIdentifier, thisUser.Id.ToString())
                 };
                 break;
 
@@ -109,8 +54,8 @@ input:focus {
                 claims = new List<Claim>()
                 {
                     new Claim("Name", loginModel.Login!),
-                    new Claim(ClaimTypes.Role, "Admin")
-                    //new Claim(ClaimTypes.NameIdentifier, "Admin")
+                    new Claim(ClaimTypes.Role, "Admin"),
+                    new Claim(ClaimTypes.NameIdentifier, thisUser.Id.ToString())
                 };
 
                 break;
@@ -120,7 +65,8 @@ input:focus {
                 claims = new List<Claim>()
                 {
                     new Claim("Name", loginModel.Login!),
-                    new Claim(ClaimTypes.Role, "Buyer")
+                    new Claim(ClaimTypes.Role, "Buyer"),
+                    new Claim(ClaimTypes.NameIdentifier, thisUser.Id.ToString())
                 };
                 break;
 
@@ -136,3 +82,59 @@ input:focus {
         await httpContext.SignInAsync(pr);
     }
 }
+
+<style>
+
+    .accept-btn {
+        width: 100%;
+        padding: 14px;
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+        .accept-btn:hover {
+            background-color: dodgerblue;
+        }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        width: 40%;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input {
+        background-color: aliceblue;
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #007bff;
+        border-radius: 4px;
+        transition: border-color 0.3s;
+    }
+
+        input:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+</style>
