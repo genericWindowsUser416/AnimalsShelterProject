@@ -35,7 +35,17 @@
     public async void StartLogin()
     {
         //Идем в базу проверяться и тд
-        var thisUser = userManager.GetUserByLoginAndPassword(loginModel.Login, loginModel.Password);
+        UserOutputModel thisUser = new();
+        try 
+        { 
+            thisUser = userManager.GetUserByLoginAndPassword(loginModel.Login, loginModel.Password); 
+        }
+        catch 
+        { 
+            Console.WriteLine("регистрация сломалась"); 
+        }
+
+        
         var claims = new List<Claim>(){};
         switch ((UserType)thisUser.UserRole)
         {
