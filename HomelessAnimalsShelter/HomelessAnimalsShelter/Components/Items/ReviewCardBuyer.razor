@@ -1,0 +1,109 @@
+﻿<div class="review-card">
+	<h3 class="UserData">@Id</h3>
+	<p class="ContentsOfTheComment">qqqqqqqqqqqqqqqqqqqqqqqqq</p>
+
+	@switch (Rating)
+	{
+		case 1:
+
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">★</p>
+
+			Console.WriteLine("REVIEW 1 score");
+			break;
+		case 2:
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+
+			Console.WriteLine("REVIEW 2 score");
+			break;
+		case 3:
+			<p class="stars">☆</p>
+			<p class="stars">☆</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+
+			Console.WriteLine("REVIEW 3 score");
+			break;
+		case 4:
+			<p class="stars">☆</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+
+			Console.WriteLine("REVIEW 4 score");
+			break;
+		case 5:
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+			<p class="stars">★</p>
+
+			Console.WriteLine("REVIEW 4 score");
+			break;
+	}
+
+	@code
+	{
+
+		[Parameter]
+		public int Id { get; set; }
+
+		[Parameter]
+		public int Rating { get; set; }
+
+		[Parameter]
+		public string Description { get; set; }
+	}
+	<img class="user-img" src="roza-png" width="300" height="200">
+</div>
+<style>
+
+	.UserData {
+		position: absolute;
+		top: 120px;
+		right: 250px;
+	}
+
+	.ContentsOfTheComment {
+		position: absolute;
+		top: 160px;
+		right: 270px;
+	}
+
+	.review-card {
+		position: relative;
+		background: white;
+		padding: 2rem;
+		border-radius: 12px;
+		box-shadow: 2px 2px 2px 4px rgba(0.1,0.1,0.1,0.2);
+		width: 300px;
+		height: 250px;
+	}
+
+	.user-img {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+
+	.stars {
+		position: relative;
+		font-size: 24px;
+		left: 190px;
+		top: -20px;
+		bottom: 10px
+	}
+
+</style>
